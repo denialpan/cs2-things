@@ -41,6 +41,13 @@ namespace cs2_things
             this.button7 = new System.Windows.Forms.Button();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.tab_main.SuspendLayout();
             this.tabpage_cs2fixes.SuspendLayout();
             this.SuspendLayout();
@@ -95,6 +102,13 @@ namespace cs2_things
             // 
             // tabpage_cs2fixes
             // 
+            this.tabpage_cs2fixes.Controls.Add(this.label7);
+            this.tabpage_cs2fixes.Controls.Add(this.label6);
+            this.tabpage_cs2fixes.Controls.Add(this.label5);
+            this.tabpage_cs2fixes.Controls.Add(this.label4);
+            this.tabpage_cs2fixes.Controls.Add(this.label3);
+            this.tabpage_cs2fixes.Controls.Add(this.label2);
+            this.tabpage_cs2fixes.Controls.Add(this.label1);
             this.tabpage_cs2fixes.Controls.Add(this.button8);
             this.tabpage_cs2fixes.Controls.Add(this.button6);
             this.tabpage_cs2fixes.Controls.Add(this.textBox7);
@@ -141,7 +155,7 @@ namespace cs2_things
             // label_cs2_root
             // 
             this.label_cs2_root.AutoSize = true;
-            this.label_cs2_root.Location = new System.Drawing.Point(6, 7);
+            this.label_cs2_root.Location = new System.Drawing.Point(6, 8);
             this.label_cs2_root.Name = "label_cs2_root";
             this.label_cs2_root.Size = new System.Drawing.Size(99, 15);
             this.label_cs2_root.TabIndex = 1;
@@ -275,6 +289,69 @@ namespace cs2_things
             this.button8.Text = "auto";
             this.button8.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 15);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "admin steamid64";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 59);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 15);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "cs2fixes.cfg";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 85);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 15);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "metamod";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 110);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(108, 15);
+            this.label4.TabIndex = 23;
+            this.label4.Text = "metamod launcher";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 136);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(47, 15);
+            this.label5.TabIndex = 24;
+            this.label5.Text = "cs2fixes";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 162);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(64, 15);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "strippercs2";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 188);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(97, 15);
+            this.label7.TabIndex = 26;
+            this.label7.Text = "gfl cs2 ze configs";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -323,5 +400,12 @@ namespace cs2_things
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }
