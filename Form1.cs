@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -329,6 +330,35 @@ namespace cs2_things
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void downloadLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var linkLabel = sender as LinkLabel;
+            string url = linkLabel == null ? null : linkLabel.Tag as string;
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                return;
+            }
+
+            try
+            {
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = url,
+                    UseShellExecute = true
+                });
+                linkLabel.LinkVisited = true;
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(
+                    this,
+                    "Could not open the link.\r\n\r\n" + error.Message,
+                    "Open link failed",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
     }
 }
