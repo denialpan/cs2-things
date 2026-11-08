@@ -10,6 +10,7 @@ namespace cs2_things
 {
     internal static class LaunchCS2
     {
+        private const string GameInfoBackupName = "gameinfo.gi.cs2launcher-backup";
         private const string WorkshopBackupName = "gameinfo.gi.cs2launcher-workshop-lines.json";
 
         private static readonly string[] WorkshopFilterLines =
@@ -98,12 +99,46 @@ namespace cs2_things
             }
 
             Report(progress, "Restoring normal CS2 launch state.");
-            UpdateGameInfoWorkshopFilters(cs2Root, false, progress);
+            int deletedFiles = RestoreGameInfoBackup(cs2Root, progress);
 
             string serverDll = Path.Combine(cs2Root, "game", "bin", "win64", "server.dll");
             Report(progress, "Deleting if present: " + serverDll);
-            int deletedFiles = DeleteFileIfExists(serverDll) ? 1 : 0;
+            if (DeleteFileIfExists(serverDll))
+            {
+                deletedFiles++;
+            }
             Report(progress, "Normal CS2 launch state restored.");
+            return deletedFiles;
+        }
+
+        private static int RestoreGameInfoBackup(string cs2Root, Action<string> progress)
+        {
+            string gameInfoPath = Path.Combine(cs2Root, "game", "csgo", "gameinfo.gi");
+            string gameInfoDirectory = Path.GetDirectoryName(gameInfoPath);
+            string backupPath = Path.Combine(gameInfoDirectory, GameInfoBackupName);
+            string workshopBackupPath = Path.Combine(gameInfoDirectory, WorkshopBackupName);
+            int deletedFiles = 0;
+
+            if (File.Exists(backupPath))
+            {
+                Report(progress, "Restoring gameinfo.gi from backup: " + backupPath);
+                File.Copy(backupPath, gameInfoPath, true);
+                File.Delete(backupPath);
+                deletedFiles++;
+                Report(progress, "Restored original gameinfo.gi: " + gameInfoPath);
+            }
+            else
+            {
+                Report(progress, "No full gameinfo.gi backup found; restoring workshop filters if needed.");
+                UpdateGameInfoWorkshopFilters(cs2Root, false, progress);
+            }
+
+            if (DeleteFileIfExists(workshopBackupPath))
+            {
+                deletedFiles++;
+                Report(progress, "Deleted workshop filter backup: " + workshopBackupPath);
+            }
+
             return deletedFiles;
         }
 
@@ -134,6 +169,7 @@ namespace cs2_things
                     return;
                 }
 
+                EnsureGameInfoBackup(gameInfoPath, progress);
                 SaveGameInfoBackup(backupPath, result.Index, result.Lines);
                 File.WriteAllText(gameInfoPath, string.Concat(result.UpdatedLines), new UTF8Encoding(false));
                 Report(progress, "Removed workshop model filters from: " + gameInfoPath);
@@ -169,8 +205,24 @@ namespace cs2_things
             RemovedLines cleaned = RemoveGameInfoWorkshopLines(lines);
             restoreIndex = Math.Max(0, Math.Min(restoreIndex, cleaned.UpdatedLines.Count));
             cleaned.UpdatedLines.InsertRange(restoreIndex, restoreLines);
+            EnsureGameInfoBackup(gameInfoPath, progress);
             File.WriteAllText(gameInfoPath, string.Concat(cleaned.UpdatedLines), new UTF8Encoding(false));
             Report(progress, "Restored workshop model filters in: " + gameInfoPath);
+        }
+
+        private static void EnsureGameInfoBackup(
+            string gameInfoPath,
+            Action<string> progress)
+        {
+            string backupPath = Path.Combine(Path.GetDirectoryName(gameInfoPath), GameInfoBackupName);
+            if (File.Exists(backupPath))
+            {
+                Report(progress, "Keeping existing gameinfo.gi backup: " + backupPath);
+                return;
+            }
+
+            File.Copy(gameInfoPath, backupPath, false);
+            Report(progress, "Backed up gameinfo.gi: " + backupPath);
         }
 
         private static RemovedLines RemoveGameInfoWorkshopLines(IList<string> lines)
