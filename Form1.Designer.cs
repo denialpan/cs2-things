@@ -30,23 +30,23 @@ namespace cs2_things
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.button7 = new System.Windows.Forms.Button();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button_cs2_root_browse = new System.Windows.Forms.Button();
+            this.button_cs2_root_autodetect = new System.Windows.Forms.Button();
+            this.button_gfl_ze_configs = new System.Windows.Forms.Button();
+            this.textbox_gfl_ze_configs = new System.Windows.Forms.TextBox();
+            this.button_strippercs2 = new System.Windows.Forms.Button();
+            this.textbox_strippercs2 = new System.Windows.Forms.TextBox();
+            this.button_cs2fixes = new System.Windows.Forms.Button();
+            this.textbox_cs2fixes = new System.Windows.Forms.TextBox();
+            this.button_metamod_launcher = new System.Windows.Forms.Button();
+            this.textbox_metamod_launcher = new System.Windows.Forms.TextBox();
+            this.button_metamod = new System.Windows.Forms.Button();
+            this.textbox_metamod = new System.Windows.Forms.TextBox();
+            this.button_cs2fixescfg = new System.Windows.Forms.Button();
+            this.textbox_cs2fixescfg = new System.Windows.Forms.TextBox();
+            this.textbox_steamid64 = new System.Windows.Forms.TextBox();
+            this.button_cs2_root = new System.Windows.Forms.Button();
             this.label_cs2_root = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textbox_cs2_root = new System.Windows.Forms.TextBox();
             this.tabpage_autojoiner = new System.Windows.Forms.TabPage();
             this.tab_main.SuspendLayout();
             this.tabpage_cs2fixes.SuspendLayout();
@@ -67,7 +67,7 @@ namespace cs2_things
             // 
             this.checkbox_cs2fixes.AutoSize = true;
             this.checkbox_cs2fixes.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkbox_cs2fixes.Location = new System.Drawing.Point(120, 12);
+            this.checkbox_cs2fixes.Location = new System.Drawing.Point(109, 12);
             this.checkbox_cs2fixes.Name = "checkbox_cs2fixes";
             this.checkbox_cs2fixes.Size = new System.Drawing.Size(131, 19);
             this.checkbox_cs2fixes.TabIndex = 1;
@@ -109,23 +109,23 @@ namespace cs2_things
             this.tabpage_cs2fixes.Controls.Add(this.label3);
             this.tabpage_cs2fixes.Controls.Add(this.label2);
             this.tabpage_cs2fixes.Controls.Add(this.label1);
-            this.tabpage_cs2fixes.Controls.Add(this.button8);
-            this.tabpage_cs2fixes.Controls.Add(this.button6);
-            this.tabpage_cs2fixes.Controls.Add(this.textBox7);
-            this.tabpage_cs2fixes.Controls.Add(this.button7);
-            this.tabpage_cs2fixes.Controls.Add(this.textBox8);
-            this.tabpage_cs2fixes.Controls.Add(this.button3);
-            this.tabpage_cs2fixes.Controls.Add(this.textBox4);
-            this.tabpage_cs2fixes.Controls.Add(this.button4);
-            this.tabpage_cs2fixes.Controls.Add(this.textBox5);
-            this.tabpage_cs2fixes.Controls.Add(this.button5);
-            this.tabpage_cs2fixes.Controls.Add(this.textBox6);
-            this.tabpage_cs2fixes.Controls.Add(this.button1);
-            this.tabpage_cs2fixes.Controls.Add(this.textBox3);
-            this.tabpage_cs2fixes.Controls.Add(this.textBox2);
-            this.tabpage_cs2fixes.Controls.Add(this.button_cs2_root_browse);
+            this.tabpage_cs2fixes.Controls.Add(this.button_cs2_root_autodetect);
+            this.tabpage_cs2fixes.Controls.Add(this.button_gfl_ze_configs);
+            this.tabpage_cs2fixes.Controls.Add(this.textbox_gfl_ze_configs);
+            this.tabpage_cs2fixes.Controls.Add(this.button_strippercs2);
+            this.tabpage_cs2fixes.Controls.Add(this.textbox_strippercs2);
+            this.tabpage_cs2fixes.Controls.Add(this.button_cs2fixes);
+            this.tabpage_cs2fixes.Controls.Add(this.textbox_cs2fixes);
+            this.tabpage_cs2fixes.Controls.Add(this.button_metamod_launcher);
+            this.tabpage_cs2fixes.Controls.Add(this.textbox_metamod_launcher);
+            this.tabpage_cs2fixes.Controls.Add(this.button_metamod);
+            this.tabpage_cs2fixes.Controls.Add(this.textbox_metamod);
+            this.tabpage_cs2fixes.Controls.Add(this.button_cs2fixescfg);
+            this.tabpage_cs2fixes.Controls.Add(this.textbox_cs2fixescfg);
+            this.tabpage_cs2fixes.Controls.Add(this.textbox_steamid64);
+            this.tabpage_cs2fixes.Controls.Add(this.button_cs2_root);
             this.tabpage_cs2fixes.Controls.Add(this.label_cs2_root);
-            this.tabpage_cs2fixes.Controls.Add(this.textBox1);
+            this.tabpage_cs2fixes.Controls.Add(this.textbox_cs2_root);
             this.tabpage_cs2fixes.Location = new System.Drawing.Point(4, 24);
             this.tabpage_cs2fixes.Name = "tabpage_cs2fixes";
             this.tabpage_cs2fixes.Padding = new System.Windows.Forms.Padding(3);
@@ -197,155 +197,155 @@ namespace cs2_things
             this.label1.TabIndex = 20;
             this.label1.Text = "admin steamid64";
             // 
-            // button8
+            // button_cs2_root_autodetect
             // 
-            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button8.Location = new System.Drawing.Point(435, 7);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(41, 23);
-            this.button8.TabIndex = 19;
-            this.button8.Text = "auto";
-            this.button8.UseVisualStyleBackColor = true;
+            this.button_cs2_root_autodetect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_cs2_root_autodetect.Location = new System.Drawing.Point(435, 7);
+            this.button_cs2_root_autodetect.Name = "button_cs2_root_autodetect";
+            this.button_cs2_root_autodetect.Size = new System.Drawing.Size(41, 23);
+            this.button_cs2_root_autodetect.TabIndex = 19;
+            this.button_cs2_root_autodetect.Text = "auto";
+            this.button_cs2_root_autodetect.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // button_gfl_ze_configs
             // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.Location = new System.Drawing.Point(482, 187);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(27, 23);
-            this.button6.TabIndex = 18;
-            this.button6.Text = "...";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button_gfl_ze_configs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_gfl_ze_configs.Location = new System.Drawing.Point(482, 187);
+            this.button_gfl_ze_configs.Name = "button_gfl_ze_configs";
+            this.button_gfl_ze_configs.Size = new System.Drawing.Size(27, 23);
+            this.button_gfl_ze_configs.TabIndex = 18;
+            this.button_gfl_ze_configs.Text = "...";
+            this.button_gfl_ze_configs.UseVisualStyleBackColor = true;
             // 
-            // textBox7
+            // textbox_gfl_ze_configs
             // 
-            this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textbox_gfl_ze_configs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox7.Location = new System.Drawing.Point(127, 188);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(349, 20);
-            this.textBox7.TabIndex = 17;
+            this.textbox_gfl_ze_configs.Location = new System.Drawing.Point(127, 188);
+            this.textbox_gfl_ze_configs.Multiline = true;
+            this.textbox_gfl_ze_configs.Name = "textbox_gfl_ze_configs";
+            this.textbox_gfl_ze_configs.Size = new System.Drawing.Size(349, 20);
+            this.textbox_gfl_ze_configs.TabIndex = 17;
             // 
-            // button7
+            // button_strippercs2
             // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.Location = new System.Drawing.Point(482, 161);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(27, 23);
-            this.button7.TabIndex = 16;
-            this.button7.Text = "...";
-            this.button7.UseVisualStyleBackColor = true;
+            this.button_strippercs2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_strippercs2.Location = new System.Drawing.Point(482, 161);
+            this.button_strippercs2.Name = "button_strippercs2";
+            this.button_strippercs2.Size = new System.Drawing.Size(27, 23);
+            this.button_strippercs2.TabIndex = 16;
+            this.button_strippercs2.Text = "...";
+            this.button_strippercs2.UseVisualStyleBackColor = true;
             // 
-            // textBox8
+            // textbox_strippercs2
             // 
-            this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textbox_strippercs2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox8.Location = new System.Drawing.Point(127, 162);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(349, 20);
-            this.textBox8.TabIndex = 15;
+            this.textbox_strippercs2.Location = new System.Drawing.Point(127, 162);
+            this.textbox_strippercs2.Multiline = true;
+            this.textbox_strippercs2.Name = "textbox_strippercs2";
+            this.textbox_strippercs2.Size = new System.Drawing.Size(349, 20);
+            this.textbox_strippercs2.TabIndex = 15;
             // 
-            // button3
+            // button_cs2fixes
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(482, 135);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(27, 23);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "...";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button_cs2fixes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_cs2fixes.Location = new System.Drawing.Point(482, 135);
+            this.button_cs2fixes.Name = "button_cs2fixes";
+            this.button_cs2fixes.Size = new System.Drawing.Size(27, 23);
+            this.button_cs2fixes.TabIndex = 14;
+            this.button_cs2fixes.Text = "...";
+            this.button_cs2fixes.UseVisualStyleBackColor = true;
             // 
-            // textBox4
+            // textbox_cs2fixes
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textbox_cs2fixes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Location = new System.Drawing.Point(127, 136);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(349, 20);
-            this.textBox4.TabIndex = 13;
+            this.textbox_cs2fixes.Location = new System.Drawing.Point(127, 136);
+            this.textbox_cs2fixes.Multiline = true;
+            this.textbox_cs2fixes.Name = "textbox_cs2fixes";
+            this.textbox_cs2fixes.Size = new System.Drawing.Size(349, 20);
+            this.textbox_cs2fixes.TabIndex = 13;
             // 
-            // button4
+            // button_metamod_launcher
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(482, 109);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(27, 23);
-            this.button4.TabIndex = 12;
-            this.button4.Text = "...";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button_metamod_launcher.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_metamod_launcher.Location = new System.Drawing.Point(482, 109);
+            this.button_metamod_launcher.Name = "button_metamod_launcher";
+            this.button_metamod_launcher.Size = new System.Drawing.Size(27, 23);
+            this.button_metamod_launcher.TabIndex = 12;
+            this.button_metamod_launcher.Text = "...";
+            this.button_metamod_launcher.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // textbox_metamod_launcher
             // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textbox_metamod_launcher.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Location = new System.Drawing.Point(127, 110);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(349, 20);
-            this.textBox5.TabIndex = 11;
+            this.textbox_metamod_launcher.Location = new System.Drawing.Point(127, 110);
+            this.textbox_metamod_launcher.Multiline = true;
+            this.textbox_metamod_launcher.Name = "textbox_metamod_launcher";
+            this.textbox_metamod_launcher.Size = new System.Drawing.Size(349, 20);
+            this.textbox_metamod_launcher.TabIndex = 11;
             // 
-            // button5
+            // button_metamod
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(482, 84);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(27, 23);
-            this.button5.TabIndex = 10;
-            this.button5.Text = "...";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button_metamod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_metamod.Location = new System.Drawing.Point(482, 84);
+            this.button_metamod.Name = "button_metamod";
+            this.button_metamod.Size = new System.Drawing.Size(27, 23);
+            this.button_metamod.TabIndex = 10;
+            this.button_metamod.Text = "...";
+            this.button_metamod.UseVisualStyleBackColor = true;
             // 
-            // textBox6
+            // textbox_metamod
             // 
-            this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textbox_metamod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox6.Location = new System.Drawing.Point(127, 85);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(349, 20);
-            this.textBox6.TabIndex = 9;
+            this.textbox_metamod.Location = new System.Drawing.Point(127, 85);
+            this.textbox_metamod.Multiline = true;
+            this.textbox_metamod.Name = "textbox_metamod";
+            this.textbox_metamod.Size = new System.Drawing.Size(349, 20);
+            this.textbox_metamod.TabIndex = 9;
             // 
-            // button1
+            // button_cs2fixescfg
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(482, 58);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(27, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_cs2fixescfg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_cs2fixescfg.Location = new System.Drawing.Point(482, 58);
+            this.button_cs2fixescfg.Name = "button_cs2fixescfg";
+            this.button_cs2fixescfg.Size = new System.Drawing.Size(27, 23);
+            this.button_cs2fixescfg.TabIndex = 8;
+            this.button_cs2fixescfg.Text = "...";
+            this.button_cs2fixescfg.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // textbox_cs2fixescfg
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textbox_cs2fixescfg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(127, 59);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(349, 20);
-            this.textBox3.TabIndex = 7;
+            this.textbox_cs2fixescfg.Location = new System.Drawing.Point(127, 59);
+            this.textbox_cs2fixescfg.Multiline = true;
+            this.textbox_cs2fixescfg.Name = "textbox_cs2fixescfg";
+            this.textbox_cs2fixescfg.Size = new System.Drawing.Size(349, 20);
+            this.textbox_cs2fixescfg.TabIndex = 7;
             // 
-            // textBox2
+            // textbox_steamid64
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textbox_steamid64.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(127, 33);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(382, 20);
-            this.textBox2.TabIndex = 4;
+            this.textbox_steamid64.Location = new System.Drawing.Point(127, 33);
+            this.textbox_steamid64.Multiline = true;
+            this.textbox_steamid64.Name = "textbox_steamid64";
+            this.textbox_steamid64.Size = new System.Drawing.Size(382, 20);
+            this.textbox_steamid64.TabIndex = 4;
             // 
-            // button_cs2_root_browse
+            // button_cs2_root
             // 
-            this.button_cs2_root_browse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_cs2_root_browse.Location = new System.Drawing.Point(482, 7);
-            this.button_cs2_root_browse.Name = "button_cs2_root_browse";
-            this.button_cs2_root_browse.Size = new System.Drawing.Size(27, 23);
-            this.button_cs2_root_browse.TabIndex = 3;
-            this.button_cs2_root_browse.Text = "...";
-            this.button_cs2_root_browse.UseVisualStyleBackColor = true;
+            this.button_cs2_root.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_cs2_root.Location = new System.Drawing.Point(482, 7);
+            this.button_cs2_root.Name = "button_cs2_root";
+            this.button_cs2_root.Size = new System.Drawing.Size(27, 23);
+            this.button_cs2_root.TabIndex = 3;
+            this.button_cs2_root.Text = "...";
+            this.button_cs2_root.UseVisualStyleBackColor = true;
             // 
             // label_cs2_root
             // 
@@ -356,15 +356,15 @@ namespace cs2_things
             this.label_cs2_root.TabIndex = 1;
             this.label_cs2_root.Text = "cs2 root directory";
             // 
-            // textBox1
+            // textbox_cs2_root
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textbox_cs2_root.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(127, 8);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(302, 20);
-            this.textBox1.TabIndex = 0;
+            this.textbox_cs2_root.Location = new System.Drawing.Point(127, 8);
+            this.textbox_cs2_root.Multiline = true;
+            this.textbox_cs2_root.Name = "textbox_cs2_root";
+            this.textbox_cs2_root.Size = new System.Drawing.Size(302, 20);
+            this.textbox_cs2_root.TabIndex = 0;
             // 
             // tabpage_autojoiner
             // 
@@ -407,23 +407,23 @@ namespace cs2_things
         private System.Windows.Forms.TabControl tab_main;
         private System.Windows.Forms.TabPage tabpage_cs2fixes;
         private System.Windows.Forms.TabPage tabpage_autojoiner;
-        private System.Windows.Forms.Button button_cs2_root_browse;
+        private System.Windows.Forms.Button button_cs2_root;
         private System.Windows.Forms.Label label_cs2_root;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.TextBox textbox_cs2_root;
+        private System.Windows.Forms.TextBox textbox_steamid64;
+        private System.Windows.Forms.Button button_gfl_ze_configs;
+        private System.Windows.Forms.TextBox textbox_gfl_ze_configs;
+        private System.Windows.Forms.Button button_strippercs2;
+        private System.Windows.Forms.TextBox textbox_strippercs2;
+        private System.Windows.Forms.Button button_cs2fixes;
+        private System.Windows.Forms.TextBox textbox_cs2fixes;
+        private System.Windows.Forms.Button button_metamod_launcher;
+        private System.Windows.Forms.TextBox textbox_metamod_launcher;
+        private System.Windows.Forms.Button button_metamod;
+        private System.Windows.Forms.TextBox textbox_metamod;
+        private System.Windows.Forms.Button button_cs2fixescfg;
+        private System.Windows.Forms.TextBox textbox_cs2fixescfg;
+        private System.Windows.Forms.Button button_cs2_root_autodetect;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
