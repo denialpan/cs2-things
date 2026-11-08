@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5991896F-9D20-4016-875C-55A6270B7C0B}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>cs2_things</RootNamespace>
     <AssemblyName>cs2-things</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>

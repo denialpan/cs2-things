@@ -22,6 +22,10 @@ namespace cs2_things
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool AllocConsole();
 
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool FreeConsole();
+
         [STAThread]
         private static int Main(string[] args)
         {
@@ -29,29 +33,54 @@ namespace cs2_things
             string error;
             if (!CommandLineOptions.TryParse(args, out options, out error))
             {
-                InitializeConsole();
-                Console.Error.WriteLine("Error: " + error);
-                Console.Error.WriteLine("Use -h or --help to list valid flags.");
-                return 2;
+                return RunWithConsole(delegate
+                {
+                    Console.Error.WriteLine("Error: " + error);
+                    Console.Error.WriteLine("Use -h or --help to list valid flags.");
+                    return 2;
+                });
             }
 
             if (options.Help)
             {
-                InitializeConsole();
-                PrintHelp();
-                return 0;
+                return RunWithConsole(delegate
+                {
+                    PrintHelp();
+                    return 0;
+                });
             }
 
             if (args.Length == 0 || options.Gui)
             {
+                FreeConsole();
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Form1());
                 return 0;
             }
 
+            return RunWithConsole(delegate { return RunCommandLine(options); });
+        }
+
+        private static int RunWithConsole(Func<int> operation)
+        {
             InitializeConsole();
-            return RunCommandLine(options);
+            try
+            {
+                return operation();
+            }
+            finally
+            {
+                try
+                {
+                    Console.Out.Flush();
+                    Console.Error.Flush();
+                }
+                catch (IOException)
+                {
+                }
+                FreeConsole();
+            }
         }
 
         private static int RunCommandLine(CommandLineOptions options)
