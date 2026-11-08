@@ -31,7 +31,6 @@ namespace cs2_things
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.button_install = new System.Windows.Forms.Button();
-            this.button_cs2_root_autodetect = new System.Windows.Forms.Button();
             this.button_gfl_ze_configs = new System.Windows.Forms.Button();
             this.textbox_gfl_ze_configs = new System.Windows.Forms.TextBox();
             this.button_strippercs2 = new System.Windows.Forms.Button();
@@ -45,9 +44,6 @@ namespace cs2_things
             this.button_cs2fixescfg = new System.Windows.Forms.Button();
             this.textbox_cs2fixescfg = new System.Windows.Forms.TextBox();
             this.textbox_steamid64 = new System.Windows.Forms.TextBox();
-            this.button_cs2_root = new System.Windows.Forms.Button();
-            this.label_cs2_root = new System.Windows.Forms.Label();
-            this.textbox_cs2_root = new System.Windows.Forms.TextBox();
             this.tabpage_autojoiner = new System.Windows.Forms.TabPage();
             this.checkbox_autojoiner_sound = new System.Windows.Forms.CheckBox();
             this.num_autojoiner_interval = new System.Windows.Forms.NumericUpDown();
@@ -63,6 +59,10 @@ namespace cs2_things
             this.textbox_autojoiner_port = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textbox_autojoiner_ip = new System.Windows.Forms.TextBox();
+            this.button_cs2_root_autodetect = new System.Windows.Forms.Button();
+            this.button_cs2_root = new System.Windows.Forms.Button();
+            this.label_cs2_root = new System.Windows.Forms.Label();
+            this.textbox_cs2_root = new System.Windows.Forms.TextBox();
             this.group_console = new System.Windows.Forms.GroupBox();
             this.rich_console = new System.Windows.Forms.RichTextBox();
             this.button_launch_cs2 = new System.Windows.Forms.Button();
@@ -99,8 +99,7 @@ namespace cs2_things
             // 
             // tab_main
             // 
-            this.tab_main.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tab_main.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tab_main.Controls.Add(this.tabpage_cs2fixes);
             this.tab_main.Controls.Add(this.tabpage_autojoiner);
@@ -110,7 +109,7 @@ namespace cs2_things
             this.tab_main.MinimumSize = new System.Drawing.Size(480, 67);
             this.tab_main.Name = "tab_main";
             this.tab_main.SelectedIndex = 0;
-            this.tab_main.Size = new System.Drawing.Size(480, 251);
+            this.tab_main.Size = new System.Drawing.Size(480, 246);
             this.tab_main.TabIndex = 3;
             // 
             // tabpage_cs2fixes
@@ -140,7 +139,7 @@ namespace cs2_things
             this.tabpage_cs2fixes.Location = new System.Drawing.Point(4, 24);
             this.tabpage_cs2fixes.Name = "tabpage_cs2fixes";
             this.tabpage_cs2fixes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpage_cs2fixes.Size = new System.Drawing.Size(472, 223);
+            this.tabpage_cs2fixes.Size = new System.Drawing.Size(472, 218);
             this.tabpage_cs2fixes.TabIndex = 0;
             this.tabpage_cs2fixes.Text = "cs2fixes";
             this.tabpage_cs2fixes.UseVisualStyleBackColor = true;
@@ -148,7 +147,7 @@ namespace cs2_things
             // button_uninstall
             // 
             this.button_uninstall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_uninstall.Location = new System.Drawing.Point(391, 192);
+            this.button_uninstall.Location = new System.Drawing.Point(391, 187);
             this.button_uninstall.Name = "button_uninstall";
             this.button_uninstall.Size = new System.Drawing.Size(75, 25);
             this.button_uninstall.TabIndex = 34;
@@ -239,23 +238,12 @@ namespace cs2_things
             // button_install
             // 
             this.button_install.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_install.Location = new System.Drawing.Point(311, 192);
+            this.button_install.Location = new System.Drawing.Point(311, 187);
             this.button_install.Name = "button_install";
             this.button_install.Size = new System.Drawing.Size(75, 25);
             this.button_install.TabIndex = 27;
             this.button_install.Text = "install";
             this.button_install.UseVisualStyleBackColor = true;
-            // 
-            // button_cs2_root_autodetect
-            // 
-            this.button_cs2_root_autodetect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_cs2_root_autodetect.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.button_cs2_root_autodetect.Location = new System.Drawing.Point(418, 8);
-            this.button_cs2_root_autodetect.Name = "button_cs2_root_autodetect";
-            this.button_cs2_root_autodetect.Size = new System.Drawing.Size(41, 23);
-            this.button_cs2_root_autodetect.TabIndex = 19;
-            this.button_cs2_root_autodetect.Text = "auto";
-            this.button_cs2_root_autodetect.UseVisualStyleBackColor = true;
             // 
             // button_gfl_ze_configs
             // 
@@ -387,38 +375,6 @@ namespace cs2_things
             this.textbox_steamid64.Size = new System.Drawing.Size(339, 20);
             this.textbox_steamid64.TabIndex = 4;
             // 
-            // button_cs2_root
-            // 
-            this.button_cs2_root.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_cs2_root.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.button_cs2_root.Location = new System.Drawing.Point(465, 8);
-            this.button_cs2_root.Name = "button_cs2_root";
-            this.button_cs2_root.Size = new System.Drawing.Size(27, 23);
-            this.button_cs2_root.TabIndex = 3;
-            this.button_cs2_root.Text = "...";
-            this.button_cs2_root.UseVisualStyleBackColor = true;
-            // 
-            // label_cs2_root
-            // 
-            this.label_cs2_root.AutoSize = true;
-            this.label_cs2_root.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label_cs2_root.Location = new System.Drawing.Point(9, 9);
-            this.label_cs2_root.Name = "label_cs2_root";
-            this.label_cs2_root.Size = new System.Drawing.Size(99, 15);
-            this.label_cs2_root.TabIndex = 1;
-            this.label_cs2_root.Text = "cs2 root directory";
-            // 
-            // textbox_cs2_root
-            // 
-            this.textbox_cs2_root.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textbox_cs2_root.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textbox_cs2_root.Location = new System.Drawing.Point(114, 9);
-            this.textbox_cs2_root.Multiline = true;
-            this.textbox_cs2_root.Name = "textbox_cs2_root";
-            this.textbox_cs2_root.Size = new System.Drawing.Size(298, 20);
-            this.textbox_cs2_root.TabIndex = 0;
-            // 
             // tabpage_autojoiner
             // 
             this.tabpage_autojoiner.Controls.Add(this.checkbox_autojoiner_sound);
@@ -438,7 +394,7 @@ namespace cs2_things
             this.tabpage_autojoiner.Location = new System.Drawing.Point(4, 24);
             this.tabpage_autojoiner.Name = "tabpage_autojoiner";
             this.tabpage_autojoiner.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpage_autojoiner.Size = new System.Drawing.Size(472, 223);
+            this.tabpage_autojoiner.Size = new System.Drawing.Size(472, 218);
             this.tabpage_autojoiner.TabIndex = 1;
             this.tabpage_autojoiner.Text = "autojoiner";
             this.tabpage_autojoiner.UseVisualStyleBackColor = true;
@@ -447,7 +403,7 @@ namespace cs2_things
             // 
             this.checkbox_autojoiner_sound.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkbox_autojoiner_sound.AutoSize = true;
-            this.checkbox_autojoiner_sound.Location = new System.Drawing.Point(321, 194);
+            this.checkbox_autojoiner_sound.Location = new System.Drawing.Point(321, 193);
             this.checkbox_autojoiner_sound.Name = "checkbox_autojoiner_sound";
             this.checkbox_autojoiner_sound.Size = new System.Drawing.Size(84, 19);
             this.checkbox_autojoiner_sound.TabIndex = 35;
@@ -537,7 +493,7 @@ namespace cs2_things
             // button_autojoiner_start
             // 
             this.button_autojoiner_start.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_autojoiner_start.Location = new System.Drawing.Point(411, 194);
+            this.button_autojoiner_start.Location = new System.Drawing.Point(411, 191);
             this.button_autojoiner_start.Name = "button_autojoiner_start";
             this.button_autojoiner_start.Size = new System.Drawing.Size(56, 23);
             this.button_autojoiner_start.TabIndex = 27;
@@ -602,14 +558,58 @@ namespace cs2_things
             this.textbox_autojoiner_ip.Size = new System.Drawing.Size(395, 20);
             this.textbox_autojoiner_ip.TabIndex = 21;
             // 
+            // button_cs2_root_autodetect
+            // 
+            this.button_cs2_root_autodetect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_cs2_root_autodetect.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button_cs2_root_autodetect.Location = new System.Drawing.Point(418, 8);
+            this.button_cs2_root_autodetect.Name = "button_cs2_root_autodetect";
+            this.button_cs2_root_autodetect.Size = new System.Drawing.Size(41, 23);
+            this.button_cs2_root_autodetect.TabIndex = 19;
+            this.button_cs2_root_autodetect.Text = "auto";
+            this.button_cs2_root_autodetect.UseVisualStyleBackColor = true;
+            // 
+            // button_cs2_root
+            // 
+            this.button_cs2_root.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_cs2_root.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button_cs2_root.Location = new System.Drawing.Point(465, 8);
+            this.button_cs2_root.Name = "button_cs2_root";
+            this.button_cs2_root.Size = new System.Drawing.Size(27, 23);
+            this.button_cs2_root.TabIndex = 3;
+            this.button_cs2_root.Text = "...";
+            this.button_cs2_root.UseVisualStyleBackColor = true;
+            // 
+            // label_cs2_root
+            // 
+            this.label_cs2_root.AutoSize = true;
+            this.label_cs2_root.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label_cs2_root.Location = new System.Drawing.Point(9, 9);
+            this.label_cs2_root.Name = "label_cs2_root";
+            this.label_cs2_root.Size = new System.Drawing.Size(99, 15);
+            this.label_cs2_root.TabIndex = 1;
+            this.label_cs2_root.Text = "cs2 root directory";
+            // 
+            // textbox_cs2_root
+            // 
+            this.textbox_cs2_root.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textbox_cs2_root.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textbox_cs2_root.Location = new System.Drawing.Point(114, 9);
+            this.textbox_cs2_root.Multiline = true;
+            this.textbox_cs2_root.Name = "textbox_cs2_root";
+            this.textbox_cs2_root.Size = new System.Drawing.Size(298, 20);
+            this.textbox_cs2_root.TabIndex = 0;
+            // 
             // group_console
             // 
-            this.group_console.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.group_console.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.group_console.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.group_console.Controls.Add(this.rich_console);
             this.group_console.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.group_console.Location = new System.Drawing.Point(12, 318);
+            this.group_console.Location = new System.Drawing.Point(12, 313);
             this.group_console.MaximumSize = new System.Drawing.Size(9999, 9999);
             this.group_console.MinimumSize = new System.Drawing.Size(478, 151);
             this.group_console.Name = "group_console";
@@ -649,7 +649,7 @@ namespace cs2_things
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
-            this.ClientSize = new System.Drawing.Size(504, 480);
+            this.ClientSize = new System.Drawing.Size(504, 474);
             this.Controls.Add(this.group_console);
             this.Controls.Add(this.tab_main);
             this.Controls.Add(this.button_launch_cs2);
@@ -660,7 +660,7 @@ namespace cs2_things
             this.Controls.Add(this.button_cs2_root_autodetect);
             this.Controls.Add(this.button_cs2_root);
             this.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.MinimumSize = new System.Drawing.Size(520, 67);
+            this.MinimumSize = new System.Drawing.Size(520, 509);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "cs2 things and such";

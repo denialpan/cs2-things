@@ -14,10 +14,16 @@ namespace cs2_things
     {
         private CancellationTokenSource autojoinerCancellation;
         private Task autojoinerTask;
+        private int cs2FixesTabControlHeight;
+        private int consoleTabSpacing;
+        private int consoleBottomSpacing;
 
         public Form1()
         {
             InitializeComponent();
+            cs2FixesTabControlHeight = tab_main.Height;
+            consoleTabSpacing = group_console.Top - tab_main.Bottom;
+            consoleBottomSpacing = ClientSize.Height - group_console.Bottom;
             LoadProgramState();
 
             button_cs2_root_autodetect.Click += button_cs2_root_autodetect_Click;
@@ -44,14 +50,20 @@ namespace cs2_things
         private void UpdateMinimumHeightForSelectedTab()
         {
             bool autojoinerSelected = tab_main.SelectedTab == tabpage_autojoiner;
+            tab_main.Height = autojoinerSelected ? 167 : cs2FixesTabControlHeight;
             MinimumSize = new System.Drawing.Size(
                 MinimumSize.Width,
-                autojoinerSelected ? 434 : 515);
+                autojoinerSelected ? 434 : 509);
 
             if (autojoinerSelected)
             {
                 Height = 434;
             }
+
+            group_console.Top = tab_main.Bottom + consoleTabSpacing;
+            group_console.Height = Math.Max(
+                group_console.MinimumSize.Height,
+                ClientSize.Height - consoleBottomSpacing - group_console.Top);
         }
 
         private async void button_uninstall_Click(object sender, EventArgs e)
