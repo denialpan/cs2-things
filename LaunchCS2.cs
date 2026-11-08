@@ -90,6 +90,23 @@ namespace cs2_things
             Report(progress, "csgocfg.exe launched.");
         }
 
+        public static int RestoreNormalLaunchState(string cs2Root, Action<string> progress)
+        {
+            if (!Directory.Exists(cs2Root))
+            {
+                throw new DirectoryNotFoundException("Select a valid CS2 root directory first.");
+            }
+
+            Report(progress, "Restoring normal CS2 launch state.");
+            UpdateGameInfoWorkshopFilters(cs2Root, false, progress);
+
+            string serverDll = Path.Combine(cs2Root, "game", "bin", "win64", "server.dll");
+            Report(progress, "Deleting if present: " + serverDll);
+            int deletedFiles = DeleteFileIfExists(serverDll) ? 1 : 0;
+            Report(progress, "Normal CS2 launch state restored.");
+            return deletedFiles;
+        }
+
         private static void UpdateGameInfoWorkshopFilters(
             string cs2Root,
             bool launchWorkshopTools,
@@ -420,9 +437,15 @@ namespace cs2_things
             Process.Start(new ProcessStartInfo { FileName = uri, UseShellExecute = true });
         }
 
-        private static void DeleteFileIfExists(string path)
+        private static bool DeleteFileIfExists(string path)
         {
-            if (File.Exists(path)) File.Delete(path);
+            if (!File.Exists(path))
+            {
+                return false;
+            }
+
+            File.Delete(path);
+            return true;
         }
 
         private static List<string> SplitLinesKeepEndings(string content)

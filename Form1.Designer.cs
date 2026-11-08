@@ -22,6 +22,7 @@ namespace cs2_things
             this.checkbox_cs2fixes = new System.Windows.Forms.CheckBox();
             this.tab_main = new System.Windows.Forms.TabControl();
             this.tabpage_cs2fixes = new System.Windows.Forms.TabPage();
+            this.button_uninstall = new System.Windows.Forms.Button();
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.linkLabel6 = new System.Windows.Forms.LinkLabel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
@@ -88,11 +89,12 @@ namespace cs2_things
             this.tab_main.Location = new System.Drawing.Point(12, 38);
             this.tab_main.Name = "tab_main";
             this.tab_main.SelectedIndex = 0;
-            this.tab_main.Size = new System.Drawing.Size(483, 277);
+            this.tab_main.Size = new System.Drawing.Size(480, 277);
             this.tab_main.TabIndex = 3;
             // 
             // tabpage_cs2fixes
             // 
+            this.tabpage_cs2fixes.Controls.Add(this.button_uninstall);
             this.tabpage_cs2fixes.Controls.Add(this.linkLabel5);
             this.tabpage_cs2fixes.Controls.Add(this.linkLabel6);
             this.tabpage_cs2fixes.Controls.Add(this.linkLabel3);
@@ -121,10 +123,20 @@ namespace cs2_things
             this.tabpage_cs2fixes.Location = new System.Drawing.Point(4, 24);
             this.tabpage_cs2fixes.Name = "tabpage_cs2fixes";
             this.tabpage_cs2fixes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpage_cs2fixes.Size = new System.Drawing.Size(475, 249);
+            this.tabpage_cs2fixes.Size = new System.Drawing.Size(472, 249);
             this.tabpage_cs2fixes.TabIndex = 0;
             this.tabpage_cs2fixes.Text = "cs2fixes";
             this.tabpage_cs2fixes.UseVisualStyleBackColor = true;
+            // 
+            // button_uninstall
+            // 
+            this.button_uninstall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_uninstall.Location = new System.Drawing.Point(391, 218);
+            this.button_uninstall.Name = "button_uninstall";
+            this.button_uninstall.Size = new System.Drawing.Size(75, 25);
+            this.button_uninstall.TabIndex = 34;
+            this.button_uninstall.Text = "uninstall";
+            this.button_uninstall.UseVisualStyleBackColor = true;
             // 
             // linkLabel5
             // 
@@ -210,17 +222,17 @@ namespace cs2_things
             // button_install
             // 
             this.button_install.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_install.Location = new System.Drawing.Point(394, 218);
+            this.button_install.Location = new System.Drawing.Point(311, 218);
             this.button_install.Name = "button_install";
             this.button_install.Size = new System.Drawing.Size(75, 25);
             this.button_install.TabIndex = 27;
-            this.button_install.Text = "Install";
+            this.button_install.Text = "install";
             this.button_install.UseVisualStyleBackColor = true;
             // 
             // button_cs2_root_autodetect
             // 
             this.button_cs2_root_autodetect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_cs2_root_autodetect.Location = new System.Drawing.Point(395, 7);
+            this.button_cs2_root_autodetect.Location = new System.Drawing.Point(392, 7);
             this.button_cs2_root_autodetect.Name = "button_cs2_root_autodetect";
             this.button_cs2_root_autodetect.Size = new System.Drawing.Size(41, 23);
             this.button_cs2_root_autodetect.TabIndex = 19;
@@ -230,7 +242,7 @@ namespace cs2_things
             // button_gfl_ze_configs
             // 
             this.button_gfl_ze_configs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_gfl_ze_configs.Location = new System.Drawing.Point(442, 187);
+            this.button_gfl_ze_configs.Location = new System.Drawing.Point(439, 187);
             this.button_gfl_ze_configs.Name = "button_gfl_ze_configs";
             this.button_gfl_ze_configs.Size = new System.Drawing.Size(27, 23);
             this.button_gfl_ze_configs.TabIndex = 18;
@@ -244,13 +256,13 @@ namespace cs2_things
             this.textbox_gfl_ze_configs.Location = new System.Drawing.Point(127, 188);
             this.textbox_gfl_ze_configs.Multiline = true;
             this.textbox_gfl_ze_configs.Name = "textbox_gfl_ze_configs";
-            this.textbox_gfl_ze_configs.Size = new System.Drawing.Size(309, 20);
+            this.textbox_gfl_ze_configs.Size = new System.Drawing.Size(306, 20);
             this.textbox_gfl_ze_configs.TabIndex = 17;
             // 
             // button_strippercs2
             // 
             this.button_strippercs2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_strippercs2.Location = new System.Drawing.Point(442, 161);
+            this.button_strippercs2.Location = new System.Drawing.Point(439, 161);
             this.button_strippercs2.Name = "button_strippercs2";
             this.button_strippercs2.Size = new System.Drawing.Size(27, 23);
             this.button_strippercs2.TabIndex = 16;
@@ -264,13 +276,13 @@ namespace cs2_things
             this.textbox_strippercs2.Location = new System.Drawing.Point(127, 162);
             this.textbox_strippercs2.Multiline = true;
             this.textbox_strippercs2.Name = "textbox_strippercs2";
-            this.textbox_strippercs2.Size = new System.Drawing.Size(309, 20);
+            this.textbox_strippercs2.Size = new System.Drawing.Size(306, 20);
             this.textbox_strippercs2.TabIndex = 15;
             // 
             // button_cs2fixes
             // 
             this.button_cs2fixes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_cs2fixes.Location = new System.Drawing.Point(442, 135);
+            this.button_cs2fixes.Location = new System.Drawing.Point(439, 135);
             this.button_cs2fixes.Name = "button_cs2fixes";
             this.button_cs2fixes.Size = new System.Drawing.Size(27, 23);
             this.button_cs2fixes.TabIndex = 14;
@@ -284,13 +296,13 @@ namespace cs2_things
             this.textbox_cs2fixes.Location = new System.Drawing.Point(127, 136);
             this.textbox_cs2fixes.Multiline = true;
             this.textbox_cs2fixes.Name = "textbox_cs2fixes";
-            this.textbox_cs2fixes.Size = new System.Drawing.Size(309, 20);
+            this.textbox_cs2fixes.Size = new System.Drawing.Size(306, 20);
             this.textbox_cs2fixes.TabIndex = 13;
             // 
             // button_metamod_launcher
             // 
             this.button_metamod_launcher.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_metamod_launcher.Location = new System.Drawing.Point(442, 109);
+            this.button_metamod_launcher.Location = new System.Drawing.Point(439, 109);
             this.button_metamod_launcher.Name = "button_metamod_launcher";
             this.button_metamod_launcher.Size = new System.Drawing.Size(27, 23);
             this.button_metamod_launcher.TabIndex = 12;
@@ -304,13 +316,13 @@ namespace cs2_things
             this.textbox_metamod_launcher.Location = new System.Drawing.Point(127, 110);
             this.textbox_metamod_launcher.Multiline = true;
             this.textbox_metamod_launcher.Name = "textbox_metamod_launcher";
-            this.textbox_metamod_launcher.Size = new System.Drawing.Size(309, 20);
+            this.textbox_metamod_launcher.Size = new System.Drawing.Size(306, 20);
             this.textbox_metamod_launcher.TabIndex = 11;
             // 
             // button_metamod
             // 
             this.button_metamod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_metamod.Location = new System.Drawing.Point(442, 84);
+            this.button_metamod.Location = new System.Drawing.Point(439, 84);
             this.button_metamod.Name = "button_metamod";
             this.button_metamod.Size = new System.Drawing.Size(27, 23);
             this.button_metamod.TabIndex = 10;
@@ -324,13 +336,13 @@ namespace cs2_things
             this.textbox_metamod.Location = new System.Drawing.Point(127, 85);
             this.textbox_metamod.Multiline = true;
             this.textbox_metamod.Name = "textbox_metamod";
-            this.textbox_metamod.Size = new System.Drawing.Size(309, 20);
+            this.textbox_metamod.Size = new System.Drawing.Size(306, 20);
             this.textbox_metamod.TabIndex = 9;
             // 
             // button_cs2fixescfg
             // 
             this.button_cs2fixescfg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_cs2fixescfg.Location = new System.Drawing.Point(442, 58);
+            this.button_cs2fixescfg.Location = new System.Drawing.Point(439, 58);
             this.button_cs2fixescfg.Name = "button_cs2fixescfg";
             this.button_cs2fixescfg.Size = new System.Drawing.Size(27, 23);
             this.button_cs2fixescfg.TabIndex = 8;
@@ -344,7 +356,7 @@ namespace cs2_things
             this.textbox_cs2fixescfg.Location = new System.Drawing.Point(127, 59);
             this.textbox_cs2fixescfg.Multiline = true;
             this.textbox_cs2fixescfg.Name = "textbox_cs2fixescfg";
-            this.textbox_cs2fixescfg.Size = new System.Drawing.Size(309, 20);
+            this.textbox_cs2fixescfg.Size = new System.Drawing.Size(306, 20);
             this.textbox_cs2fixescfg.TabIndex = 7;
             // 
             // textbox_steamid64
@@ -354,13 +366,13 @@ namespace cs2_things
             this.textbox_steamid64.Location = new System.Drawing.Point(127, 33);
             this.textbox_steamid64.Multiline = true;
             this.textbox_steamid64.Name = "textbox_steamid64";
-            this.textbox_steamid64.Size = new System.Drawing.Size(342, 20);
+            this.textbox_steamid64.Size = new System.Drawing.Size(339, 20);
             this.textbox_steamid64.TabIndex = 4;
             // 
             // button_cs2_root
             // 
             this.button_cs2_root.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_cs2_root.Location = new System.Drawing.Point(442, 7);
+            this.button_cs2_root.Location = new System.Drawing.Point(439, 7);
             this.button_cs2_root.Name = "button_cs2_root";
             this.button_cs2_root.Size = new System.Drawing.Size(27, 23);
             this.button_cs2_root.TabIndex = 3;
@@ -383,7 +395,7 @@ namespace cs2_things
             this.textbox_cs2_root.Location = new System.Drawing.Point(127, 8);
             this.textbox_cs2_root.Multiline = true;
             this.textbox_cs2_root.Name = "textbox_cs2_root";
-            this.textbox_cs2_root.Size = new System.Drawing.Size(262, 20);
+            this.textbox_cs2_root.Size = new System.Drawing.Size(259, 20);
             this.textbox_cs2_root.TabIndex = 0;
             // 
             // tabpage_autojoiner
@@ -405,7 +417,7 @@ namespace cs2_things
             this.group_console.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.group_console.Location = new System.Drawing.Point(12, 318);
             this.group_console.Name = "group_console";
-            this.group_console.Size = new System.Drawing.Size(483, 151);
+            this.group_console.Size = new System.Drawing.Size(478, 151);
             this.group_console.TabIndex = 4;
             this.group_console.TabStop = false;
             this.group_console.Text = "console";
@@ -420,7 +432,7 @@ namespace cs2_things
             this.rich_console.Location = new System.Drawing.Point(4, 23);
             this.rich_console.Name = "rich_console";
             this.rich_console.ReadOnly = true;
-            this.rich_console.Size = new System.Drawing.Size(473, 122);
+            this.rich_console.Size = new System.Drawing.Size(468, 122);
             this.rich_console.TabIndex = 0;
             this.rich_console.Text = "";
             // 
@@ -496,5 +508,6 @@ namespace cs2_things
         private System.Windows.Forms.GroupBox group_console;
         private System.Windows.Forms.RichTextBox rich_console;
         private System.Windows.Forms.Button button_launch_cs2;
+        private System.Windows.Forms.Button button_uninstall;
     }
 }

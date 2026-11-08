@@ -73,9 +73,11 @@ namespace cs2_things
             Report(progress, "Starting install.");
             ValidateRequest(request);
             Report(progress, "CS2 root: " + request.Cs2Root);
+            InstallRollback rollback = InstallRollback.Begin(request.Cs2Root);
 
             var results = new List<string>();
             var installs = CreateInstallDefinitions(request);
+            int totalInstalledFiles = 0;
 
             foreach (InstallDefinition install in installs)
             {
@@ -86,7 +88,7 @@ namespace cs2_things
                 if (!Directory.Exists(targetDirectory))
                 {
                     Report(progress, "Creating target directory: " + targetDirectory);
-                    Directory.CreateDirectory(targetDirectory);
+                    rollback.EnsureDirectory(targetDirectory);
                 }
 
                 Report(progress, "Extracting from: " + install.ZipPath);
@@ -101,7 +103,8 @@ namespace cs2_things
                     install.ZipPath,
                     targetDirectory,
                     install.SourcePrefix,
-                    install.ExcludePrefixes);
+                    install.ExcludePrefixes,
+                    rollback);
 
                 if (install.SourcePrefix != null && extractedCount == 0)
                 {
@@ -114,6 +117,7 @@ namespace cs2_things
                 results.Add(
                     install.DisplayName + ": " + extractedCount +
                     " files to " + install.TargetPath);
+                totalInstalledFiles += extractedCount;
                 Report(
                     progress,
                     "Finished " + install.DisplayName + ": " + extractedCount + " files.");
@@ -125,12 +129,13 @@ namespace cs2_things
                 request.Cs2Root,
                 "game", "csgo", "addons", "cs2fixes", "configs", "admins.jsonc");
             Report(progress, "Writing admins.jsonc: " + adminsPath);
-            Directory.CreateDirectory(Path.GetDirectoryName(adminsPath));
+            rollback.PrepareFile(adminsPath);
             File.WriteAllText(
                 adminsPath,
                 AdminsTemplate.Replace("<id here>", request.SteamId64),
                 new UTF8Encoding(false));
             results.Add("admins.jsonc: steamID64 updated");
+            totalInstalledFiles++;
             Report(progress, "Finished admins.jsonc.");
 
             string configPath = Path.Combine(
@@ -138,13 +143,17 @@ namespace cs2_things
                 "game", "csgo", "addons", "cs2fixes", "cfg", "cs2fixes.cfg");
             Report(progress, "cs2fixes.cfg source: " + request.Cs2FixesConfig);
             Report(progress, "Copying cs2fixes.cfg to: " + configPath);
-            Directory.CreateDirectory(Path.GetDirectoryName(configPath));
+            rollback.PrepareFile(configPath);
             File.Copy(request.Cs2FixesConfig, configPath, true);
             results.Add("cs2fixes.cfg: updated");
+            totalInstalledFiles++;
             Report(progress, "Finished cs2fixes.cfg: source file copied with overwrite enabled.");
 
             timer.Stop();
-            Report(progress, "Install complete in " + timer.Elapsed.TotalSeconds.ToString("F2") + " seconds.");
+            Report(
+                progress,
+                "Install complete: " + totalInstalledFiles + " files installed in " +
+                timer.Elapsed.TotalSeconds.ToString("F2") + " seconds.");
 
             return results;
         }
@@ -288,7 +297,8 @@ namespace cs2_things
             string zipPath,
             string targetDirectory,
             string sourcePrefix,
-            IList<string> excludePrefixes)
+            IList<string> excludePrefixes,
+            InstallRollback rollback)
         {
             string targetRoot = Path.GetFullPath(targetDirectory);
             string targetRootWithSeparator = targetRoot.TrimEnd(
@@ -348,15 +358,11 @@ namespace cs2_things
                                            string.IsNullOrEmpty(entry.Name);
                         if (isDirectory)
                         {
-                            Directory.CreateDirectory(destination);
+                            rollback.EnsureDirectory(destination);
                             continue;
                         }
 
-                        string destinationDirectory = Path.GetDirectoryName(destination);
-                        if (!string.IsNullOrEmpty(destinationDirectory))
-                        {
-                            Directory.CreateDirectory(destinationDirectory);
-                        }
+                        rollback.PrepareFile(destination);
 
                         using (Stream source = entry.Open())
                         using (var output = new FileStream(

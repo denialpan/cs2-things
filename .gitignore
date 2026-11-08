@@ -6,3 +6,5 @@ bin/
 obj/
 reference/
 config.ini
+install-rollback.json
+install-rollback-data/
