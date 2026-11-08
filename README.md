@@ -1,6 +1,7 @@
 A simple Windows utility to automate some things I find tedious to interop. This handles the main 4 "modes" that the game can open in, while handling all the proper file operations to allow safe connections to VAC servers without erroring out after introducing/modifying game files.
 
 This is a more lightweight version of a previous tool I made here: https://github.com/denialpan/cs2-misc-things
+
 ![Alt text for the image](images/cs2-things_Nw3w8S1bW5.png)
 
 ### Main features
