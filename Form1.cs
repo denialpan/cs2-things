@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,6 +16,10 @@ namespace cs2_things
     {
         private const int AutojoinerQueryTimeoutMilliseconds = 3000;
         private const int AutojoinerConnectAttemptMilliseconds = 10000;
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool NativeBeep(uint frequency, uint duration);
 
         private CancellationTokenSource autojoinerCancellation;
         private Task autojoinerTask;
@@ -304,7 +309,7 @@ namespace cs2_things
             int serverPort;
             if (serverHost.Length == 0)
             {
-                ShowAutojoinerError("Enter an autojoiner server IP or hostname first.");
+                ShowAutojoinerError("Enter server IP or hostname first.");
                 return;
             }
             if (!int.TryParse(textbox_autojoiner_port.Text.Trim(), out serverPort) ||
@@ -321,13 +326,13 @@ namespace cs2_things
             if (num_autojoiner_interval.Value < 1 ||
                 num_autojoiner_interval.Value > int.MaxValue)
             {
-                ShowAutojoinerError("Enter an autojoiner interval from 1 through 2147483647 milliseconds.");
+                ShowAutojoinerError("Enter a polling interval. Recommended is at least 750ms to avoid being flagged.");
                 return;
             }
             if (checkbox_cs2fixes.Checked || checkbox_tools.Checked)
             {
                 ShowAutojoinerError(
-                    "Disable CS2Fixes and workshop tools before starting the autojoiner.");
+                    "Disable CS2Fixes and workshop tools first.");
                 return;
             }
 
@@ -537,7 +542,7 @@ namespace cs2_things
             {
                 for (int index = 0; index < frequencies.Length && index < durations.Length; index++)
                 {
-                    Console.Beep(frequencies[index], durations[index]);
+                    NativeBeep((uint)frequencies[index], (uint)durations[index]);
                 }
             }
             catch (Exception)
