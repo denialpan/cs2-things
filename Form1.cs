@@ -15,6 +15,92 @@ namespace cs2_things
 
             button_cs2_root_autodetect.Click += button_cs2_root_autodetect_Click;
             button_cs2_root.Click += button_cs2_root_Click;
+            button_cs2fixescfg.Click += delegate { SelectFile(textbox_cs2fixescfg, "Config files (*.cfg)|*.cfg|All files (*.*)|*.*", "Select cs2fixes.cfg"); };
+            button_metamod.Click += delegate { SelectZip(textbox_metamod, "Select the Metamod zip"); };
+            button_metamod_launcher.Click += delegate { SelectZip(textbox_metamod_launcher, "Select the Metamod Launcher zip"); };
+            button_cs2fixes.Click += delegate { SelectZip(textbox_cs2fixes, "Select the CS2Fixes zip"); };
+            button_strippercs2.Click += delegate { SelectZip(textbox_strippercs2, "Select the StripperCS2 zip"); };
+            button_gfl_ze_configs.Click += delegate { SelectZip(textbox_gfl_ze_configs, "Select the GFL CS2 ZE Configs zip"); };
+            button_install.Click += button_install_Click;
+        }
+
+        private void SelectZip(TextBox target, string title)
+        {
+            SelectFile(target, "Zip files (*.zip)|*.zip|All files (*.*)|*.*", title);
+        }
+
+        private void SelectFile(TextBox target, string filter, string title)
+        {
+            using (var dialog = new OpenFileDialog())
+            {
+                dialog.Title = title;
+                dialog.Filter = filter;
+                dialog.CheckFileExists = true;
+                dialog.Multiselect = false;
+
+                if (File.Exists(target.Text))
+                {
+                    dialog.FileName = target.Text;
+                }
+
+                if (dialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    target.Text = dialog.FileName;
+                }
+            }
+        }
+
+        private void button_install_Click(object sender, EventArgs e)
+        {
+            var request = new Cs2InstallationRequest
+            {
+                Cs2Root = textbox_cs2_root.Text.Trim(),
+                SteamId64 = textbox_steamid64.Text.Trim(),
+                Cs2FixesConfig = textbox_cs2fixescfg.Text.Trim(),
+                MetamodZip = textbox_metamod.Text.Trim(),
+                MetamodLauncherZip = textbox_metamod_launcher.Text.Trim(),
+                Cs2FixesZip = textbox_cs2fixes.Text.Trim(),
+                StripperCs2Zip = textbox_strippercs2.Text.Trim(),
+                GflZeConfigsZip = textbox_gfl_ze_configs.Text.Trim()
+            };
+
+            button_install.Enabled = false;
+            UseWaitCursor = true;
+
+            try
+            {
+                IList<string> results = InstallCS2Fixes.Install(request);
+                MessageBox.Show(
+                    this,
+                    "Installation completed successfully.\r\n\r\n" +
+                    string.Join("\r\n", results),
+                    "Install complete",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Cs2InstallationException error)
+            {
+                MessageBox.Show(
+                    this,
+                    error.Message,
+                    error.Title,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(
+                    this,
+                    "Could not complete the installation.\r\n\r\n" + error.Message,
+                    "Install failed",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            finally
+            {
+                UseWaitCursor = false;
+                button_install.Enabled = true;
+            }
         }
 
         private void button_cs2_root_autodetect_Click(object sender, EventArgs e)

@@ -28,8 +28,8 @@ namespace cs2_things
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.button_install = new System.Windows.Forms.Button();
             this.button_cs2_root_autodetect = new System.Windows.Forms.Button();
             this.button_gfl_ze_configs = new System.Windows.Forms.Button();
             this.textbox_gfl_ze_configs = new System.Windows.Forms.TextBox();
@@ -48,6 +48,7 @@ namespace cs2_things
             this.label_cs2_root = new System.Windows.Forms.Label();
             this.textbox_cs2_root = new System.Windows.Forms.TextBox();
             this.tabpage_autojoiner = new System.Windows.Forms.TabPage();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.tab_main.SuspendLayout();
             this.tabpage_cs2fixes.SuspendLayout();
             this.SuspendLayout();
@@ -97,18 +98,19 @@ namespace cs2_things
             this.tab_main.Location = new System.Drawing.Point(12, 38);
             this.tab_main.Name = "tab_main";
             this.tab_main.SelectedIndex = 0;
-            this.tab_main.Size = new System.Drawing.Size(523, 249);
+            this.tab_main.Size = new System.Drawing.Size(523, 277);
             this.tab_main.TabIndex = 3;
             // 
             // tabpage_cs2fixes
             // 
+            this.tabpage_cs2fixes.Controls.Add(this.linkLabel1);
             this.tabpage_cs2fixes.Controls.Add(this.label7);
             this.tabpage_cs2fixes.Controls.Add(this.label6);
             this.tabpage_cs2fixes.Controls.Add(this.label5);
             this.tabpage_cs2fixes.Controls.Add(this.label4);
             this.tabpage_cs2fixes.Controls.Add(this.label3);
-            this.tabpage_cs2fixes.Controls.Add(this.label2);
             this.tabpage_cs2fixes.Controls.Add(this.label1);
+            this.tabpage_cs2fixes.Controls.Add(this.button_install);
             this.tabpage_cs2fixes.Controls.Add(this.button_cs2_root_autodetect);
             this.tabpage_cs2fixes.Controls.Add(this.button_gfl_ze_configs);
             this.tabpage_cs2fixes.Controls.Add(this.textbox_gfl_ze_configs);
@@ -129,7 +131,7 @@ namespace cs2_things
             this.tabpage_cs2fixes.Location = new System.Drawing.Point(4, 24);
             this.tabpage_cs2fixes.Name = "tabpage_cs2fixes";
             this.tabpage_cs2fixes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpage_cs2fixes.Size = new System.Drawing.Size(515, 221);
+            this.tabpage_cs2fixes.Size = new System.Drawing.Size(515, 249);
             this.tabpage_cs2fixes.TabIndex = 0;
             this.tabpage_cs2fixes.Text = "cs2fixes";
             this.tabpage_cs2fixes.UseVisualStyleBackColor = true;
@@ -179,15 +181,6 @@ namespace cs2_things
             this.label3.TabIndex = 22;
             this.label3.Text = "metamod";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 15);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "cs2fixes.cfg";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -196,6 +189,16 @@ namespace cs2_things
             this.label1.Size = new System.Drawing.Size(98, 15);
             this.label1.TabIndex = 20;
             this.label1.Text = "admin steamid64";
+            // 
+            // button_install
+            // 
+            this.button_install.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_install.Location = new System.Drawing.Point(434, 218);
+            this.button_install.Name = "button_install";
+            this.button_install.Size = new System.Drawing.Size(75, 25);
+            this.button_install.TabIndex = 27;
+            this.button_install.Text = "Install";
+            this.button_install.UseVisualStyleBackColor = true;
             // 
             // button_cs2_root_autodetect
             // 
@@ -376,18 +379,28 @@ namespace cs2_things
             this.tabpage_autojoiner.Text = "autojoiner";
             this.tabpage_autojoiner.UseVisualStyleBackColor = true;
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(6, 59);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(60, 15);
+            this.linkLabel1.TabIndex = 28;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "linkLabel1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
-            this.ClientSize = new System.Drawing.Size(547, 299);
+            this.ClientSize = new System.Drawing.Size(547, 331);
             this.Controls.Add(this.tab_main);
             this.Controls.Add(this.button_launch_cs2);
             this.Controls.Add(this.checkbox_cs2fixes);
             this.Controls.Add(this.checkbox_tools);
             this.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.MinimumSize = new System.Drawing.Size(520, 320);
+            this.MinimumSize = new System.Drawing.Size(520, 366);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "cs2 things and such";
@@ -425,11 +438,12 @@ namespace cs2_things
         private System.Windows.Forms.TextBox textbox_cs2fixescfg;
         private System.Windows.Forms.Button button_cs2_root_autodetect;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button_install;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
