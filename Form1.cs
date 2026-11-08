@@ -10,6 +10,18 @@ namespace cs2_things
             InitializeComponent();
         }
 
+        protected override void OnResizeBegin(EventArgs e)
+        {
+            base.OnResizeBegin(e);
+            SuspendLayout();
+        }
+
+        protected override void OnResizeEnd(EventArgs e)
+        {
+            ResumeLayout(true);
+            base.OnResizeEnd(e);
+        }
+
         private void SayHelloButton_Click(object sender, EventArgs e)
         {
             
