@@ -60,15 +60,19 @@ namespace cs2_things
             this.textbox_autojoiner_username = new System.Windows.Forms.TextBox();
             this.button_autojoiner_start = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.num_autojoiner_threshold = new System.Windows.Forms.NumericUpDown();
+            this.num_autojoiner_max = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
+            this.num_autojoiner_interval = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.checkbox_autojoiner_sound = new System.Windows.Forms.CheckBox();
             this.tab_main.SuspendLayout();
             this.tabpage_cs2fixes.SuspendLayout();
             this.tabpage_autojoiner.SuspendLayout();
             this.group_console.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_autojoiner_threshold)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_autojoiner_max)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_autojoiner_interval)).BeginInit();
             this.SuspendLayout();
             // 
             // checkbox_tools
@@ -417,9 +421,12 @@ namespace cs2_things
             // 
             // tabpage_autojoiner
             // 
-            this.tabpage_autojoiner.Controls.Add(this.numericUpDown2);
+            this.tabpage_autojoiner.Controls.Add(this.checkbox_autojoiner_sound);
+            this.tabpage_autojoiner.Controls.Add(this.num_autojoiner_interval);
+            this.tabpage_autojoiner.Controls.Add(this.label7);
+            this.tabpage_autojoiner.Controls.Add(this.num_autojoiner_max);
             this.tabpage_autojoiner.Controls.Add(this.label6);
-            this.tabpage_autojoiner.Controls.Add(this.numericUpDown1);
+            this.tabpage_autojoiner.Controls.Add(this.num_autojoiner_threshold);
             this.tabpage_autojoiner.Controls.Add(this.label5);
             this.tabpage_autojoiner.Controls.Add(this.button_autojoiner_start);
             this.tabpage_autojoiner.Controls.Add(this.label4);
@@ -537,10 +544,10 @@ namespace cs2_things
             // 
             // button_autojoiner_start
             // 
-            this.button_autojoiner_start.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_autojoiner_start.Location = new System.Drawing.Point(400, 85);
+            this.button_autojoiner_start.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_autojoiner_start.Location = new System.Drawing.Point(410, 216);
             this.button_autojoiner_start.Name = "button_autojoiner_start";
-            this.button_autojoiner_start.Size = new System.Drawing.Size(67, 23);
+            this.button_autojoiner_start.Size = new System.Drawing.Size(56, 23);
             this.button_autojoiner_start.TabIndex = 27;
             this.button_autojoiner_start.Text = "start";
             this.button_autojoiner_start.UseVisualStyleBackColor = true;
@@ -554,29 +561,87 @@ namespace cs2_things
             this.label5.TabIndex = 29;
             this.label5.Text = "threshold";
             // 
-            // numericUpDown1
+            // num_autojoiner_threshold
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(71, 85);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(56, 23);
-            this.numericUpDown1.TabIndex = 30;
+            this.num_autojoiner_threshold.Location = new System.Drawing.Point(71, 85);
+            this.num_autojoiner_threshold.Maximum = new decimal(new int[] {
+            64,
+            0,
+            0,
+            0});
+            this.num_autojoiner_threshold.Name = "num_autojoiner_threshold";
+            this.num_autojoiner_threshold.Size = new System.Drawing.Size(45, 23);
+            this.num_autojoiner_threshold.TabIndex = 30;
             // 
-            // numericUpDown2
+            // num_autojoiner_max
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(202, 85);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(56, 23);
-            this.numericUpDown2.TabIndex = 32;
-            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            this.num_autojoiner_max.Location = new System.Drawing.Point(191, 85);
+            this.num_autojoiner_max.Maximum = new decimal(new int[] {
+            64,
+            0,
+            0,
+            0});
+            this.num_autojoiner_max.Name = "num_autojoiner_max";
+            this.num_autojoiner_max.Size = new System.Drawing.Size(51, 23);
+            this.num_autojoiner_max.TabIndex = 32;
+            this.num_autojoiner_max.Value = new decimal(new int[] {
+            64,
+            0,
+            0,
+            0});
+            this.num_autojoiner_max.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(133, 85);
+            this.label6.Location = new System.Drawing.Point(122, 85);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 15);
             this.label6.TabIndex = 31;
             this.label6.Text = "server max";
+            // 
+            // num_autojoiner_interval
+            // 
+            this.num_autojoiner_interval.Location = new System.Drawing.Point(327, 85);
+            this.num_autojoiner_interval.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.num_autojoiner_interval.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.num_autojoiner_interval.Name = "num_autojoiner_interval";
+            this.num_autojoiner_interval.Size = new System.Drawing.Size(139, 23);
+            this.num_autojoiner_interval.TabIndex = 34;
+            this.num_autojoiner_interval.Value = new decimal(new int[] {
+            1500,
+            0,
+            0,
+            0});
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(248, 85);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(73, 15);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "interval (ms)";
+            // 
+            // checkbox_autojoiner_sound
+            // 
+            this.checkbox_autojoiner_sound.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkbox_autojoiner_sound.AutoSize = true;
+            this.checkbox_autojoiner_sound.Location = new System.Drawing.Point(320, 216);
+            this.checkbox_autojoiner_sound.Name = "checkbox_autojoiner_sound";
+            this.checkbox_autojoiner_sound.Size = new System.Drawing.Size(84, 19);
+            this.checkbox_autojoiner_sound.TabIndex = 35;
+            this.checkbox_autojoiner_sound.Text = "play sound";
+            this.checkbox_autojoiner_sound.UseVisualStyleBackColor = true;
+            this.checkbox_autojoiner_sound.CheckedChanged += new System.EventHandler(this.checkbox_autojoiner_sound_CheckedChanged);
             // 
             // Form1
             // 
@@ -600,8 +665,9 @@ namespace cs2_things
             this.tabpage_autojoiner.ResumeLayout(false);
             this.tabpage_autojoiner.PerformLayout();
             this.group_console.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_autojoiner_threshold)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_autojoiner_max)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_autojoiner_interval)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -651,8 +717,11 @@ namespace cs2_things
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textbox_autojoiner_port;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown num_autojoiner_max;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown num_autojoiner_threshold;
+        private System.Windows.Forms.CheckBox checkbox_autojoiner_sound;
+        private System.Windows.Forms.NumericUpDown num_autojoiner_interval;
+        private System.Windows.Forms.Label label7;
     }
 }

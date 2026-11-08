@@ -16,6 +16,13 @@ namespace cs2_things
         public string Cs2FixesZip { get; set; }
         public string StripperCs2Zip { get; set; }
         public string GflZeConfigsZip { get; set; }
+        public string AutojoinerIp { get; set; }
+        public string AutojoinerPort { get; set; }
+        public string AutojoinerUsername { get; set; }
+        public int AutojoinerThreshold { get; set; }
+        public int AutojoinerServerMax { get; set; }
+        public int AutojoinerIntervalMilliseconds { get; set; }
+        public bool AutojoinerSound { get; set; }
         public bool LaunchWithCs2Fixes { get; set; }
         public bool LaunchWorkshopTools { get; set; }
         public int SelectedTab { get; set; }
@@ -37,6 +44,9 @@ namespace cs2_things
         {
             var state = new ProgramStateData
             {
+                AutojoinerThreshold = 62,
+                AutojoinerServerMax = 64,
+                AutojoinerIntervalMilliseconds = 1500,
                 WindowState = FormWindowState.Normal
             };
 
@@ -54,6 +64,14 @@ namespace cs2_things
             state.Cs2FixesZip = Get(values, "fields", "zip_cs2fixes");
             state.StripperCs2Zip = Get(values, "fields", "zip_strippercs2");
             state.GflZeConfigsZip = Get(values, "fields", "zip_gfl_cs2_ze_configs");
+            state.AutojoinerIp = Get(values, "fields", "autojoiner_ip");
+            state.AutojoinerPort = Get(values, "fields", "autojoiner_port");
+            state.AutojoinerUsername = Get(values, "fields", "autojoiner_username");
+            state.AutojoinerThreshold = GetInt(values, "fields", "autojoiner_threshold", 62);
+            state.AutojoinerServerMax = GetInt(values, "fields", "autojoiner_server_max", 64);
+            state.AutojoinerIntervalMilliseconds = GetInt(
+                values, "fields", "autojoiner_interval_ms", 1500);
+            state.AutojoinerSound = GetBool(values, "checkboxes", "autojoiner_sound", false);
             state.LaunchWithCs2Fixes = GetBool(
                 values, "checkboxes", "launch_with_cs2fixes", false);
             state.LaunchWorkshopTools = GetBool(
@@ -106,11 +124,18 @@ namespace cs2_things
             Append(output, "zip_cs2fixes", state.Cs2FixesZip);
             Append(output, "zip_strippercs2", state.StripperCs2Zip);
             Append(output, "zip_gfl_cs2_ze_configs", state.GflZeConfigsZip);
+            Append(output, "autojoiner_ip", state.AutojoinerIp);
+            Append(output, "autojoiner_port", state.AutojoinerPort);
+            Append(output, "autojoiner_username", state.AutojoinerUsername);
+            Append(output, "autojoiner_threshold", state.AutojoinerThreshold.ToString());
+            Append(output, "autojoiner_server_max", state.AutojoinerServerMax.ToString());
+            Append(output, "autojoiner_interval_ms", state.AutojoinerIntervalMilliseconds.ToString());
             output.AppendLine();
 
             output.AppendLine("[checkboxes]");
             Append(output, "launch_with_cs2fixes", state.LaunchWithCs2Fixes.ToString());
             Append(output, "launch_workshop_tools", state.LaunchWorkshopTools.ToString());
+            Append(output, "autojoiner_sound", state.AutojoinerSound.ToString());
             output.AppendLine();
 
             output.AppendLine("[window]");

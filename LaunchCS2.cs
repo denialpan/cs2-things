@@ -111,6 +111,20 @@ namespace cs2_things
             return deletedFiles;
         }
 
+        public static void ConnectToServer(string serverHost, int serverPort)
+        {
+            if (string.IsNullOrWhiteSpace(serverHost))
+            {
+                throw new ArgumentException("A server host is required.", "serverHost");
+            }
+            if (serverPort < 1 || serverPort > 65535)
+            {
+                throw new ArgumentOutOfRangeException("serverPort");
+            }
+
+            LaunchUri("steam://run/730//+connect " + serverHost + ":" + serverPort);
+        }
+
         private static int RestoreGameInfoBackup(string cs2Root, Action<string> progress)
         {
             string gameInfoPath = Path.Combine(cs2Root, "game", "csgo", "gameinfo.gi");

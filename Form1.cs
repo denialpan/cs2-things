@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
@@ -11,6 +13,12 @@ namespace cs2_things
 {
     public partial class Form1 : Form
     {
+        private const int AutojoinerQueryTimeoutMilliseconds = 3000;
+        private const int AutojoinerConnectAttemptMilliseconds = 10000;
+
+        private CancellationTokenSource autojoinerCancellation;
+        private Task autojoinerTask;
+
         public Form1()
         {
             InitializeComponent();
@@ -27,6 +35,7 @@ namespace cs2_things
             button_install.Click += button_install_Click;
             button_uninstall.Click += button_uninstall_Click;
             button_launch_cs2.Click += button_launch_cs2_Click;
+            button_autojoiner_start.Click += button_autojoiner_start_Click;
             tab_main.SelectedIndexChanged += tab_main_SelectedIndexChanged;
             UpdateMinimumHeightForSelectedTab();
         }
@@ -41,11 +50,11 @@ namespace cs2_things
             bool autojoinerSelected = tab_main.SelectedTab == tabpage_autojoiner;
             MinimumSize = new System.Drawing.Size(
                 MinimumSize.Width,
-                autojoinerSelected ? 413 : 547);
+                autojoinerSelected ? 450 : 547);
 
             if (autojoinerSelected)
             {
-                Height = 413;
+                Height = 450;
             }
         }
 
@@ -123,6 +132,13 @@ namespace cs2_things
                 textbox_cs2fixes.Text = state.Cs2FixesZip;
                 textbox_strippercs2.Text = state.StripperCs2Zip;
                 textbox_gfl_ze_configs.Text = state.GflZeConfigsZip;
+                textbox_autojoiner_ip.Text = state.AutojoinerIp;
+                textbox_autojoiner_port.Text = state.AutojoinerPort;
+                textbox_autojoiner_username.Text = state.AutojoinerUsername;
+                SetNumericValue(num_autojoiner_threshold, state.AutojoinerThreshold);
+                SetNumericValue(num_autojoiner_max, state.AutojoinerServerMax);
+                SetNumericValue(num_autojoiner_interval, state.AutojoinerIntervalMilliseconds);
+                checkbox_autojoiner_sound.Checked = state.AutojoinerSound;
                 checkbox_cs2fixes.Checked = state.LaunchWithCs2Fixes;
                 checkbox_tools.Checked = state.LaunchWorkshopTools;
 
@@ -169,6 +185,11 @@ namespace cs2_things
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
+            if (autojoinerCancellation != null)
+            {
+                autojoinerCancellation.Cancel();
+            }
+
             try
             {
                 System.Drawing.Rectangle savedBounds = WindowState == FormWindowState.Normal
@@ -185,6 +206,13 @@ namespace cs2_things
                     Cs2FixesZip = textbox_cs2fixes.Text.Trim(),
                     StripperCs2Zip = textbox_strippercs2.Text.Trim(),
                     GflZeConfigsZip = textbox_gfl_ze_configs.Text.Trim(),
+                    AutojoinerIp = textbox_autojoiner_ip.Text.Trim(),
+                    AutojoinerPort = textbox_autojoiner_port.Text.Trim(),
+                    AutojoinerUsername = textbox_autojoiner_username.Text.Trim(),
+                    AutojoinerThreshold = Decimal.ToInt32(num_autojoiner_threshold.Value),
+                    AutojoinerServerMax = Decimal.ToInt32(num_autojoiner_max.Value),
+                    AutojoinerIntervalMilliseconds = Decimal.ToInt32(num_autojoiner_interval.Value),
+                    AutojoinerSound = checkbox_autojoiner_sound.Checked,
                     LaunchWithCs2Fixes = checkbox_cs2fixes.Checked,
                     LaunchWorkshopTools = checkbox_tools.Checked,
                     SelectedTab = tab_main.SelectedIndex,
@@ -258,6 +286,262 @@ namespace cs2_things
             {
                 UseWaitCursor = false;
                 button_launch_cs2.Enabled = true;
+            }
+        }
+
+        private async void button_autojoiner_start_Click(object sender, EventArgs e)
+        {
+            if (autojoinerCancellation != null)
+            {
+                AppendConsoleLine("Stopping autojoiner.");
+                button_autojoiner_start.Enabled = false;
+                autojoinerCancellation.Cancel();
+                return;
+            }
+
+            string serverHost = textbox_autojoiner_ip.Text.Trim();
+            string playerName = textbox_autojoiner_username.Text.Trim();
+            int serverPort;
+            if (serverHost.Length == 0)
+            {
+                ShowAutojoinerError("Enter an autojoiner server IP or hostname first.");
+                return;
+            }
+            if (!int.TryParse(textbox_autojoiner_port.Text.Trim(), out serverPort) ||
+                serverPort < 1 || serverPort > 65535)
+            {
+                ShowAutojoinerError("Enter a numeric autojoiner server port from 1 through 65535.");
+                return;
+            }
+            if (playerName.Length == 0)
+            {
+                ShowAutojoinerError("Enter a player name to check for first.");
+                return;
+            }
+            if (num_autojoiner_interval.Value < 1 ||
+                num_autojoiner_interval.Value > int.MaxValue)
+            {
+                ShowAutojoinerError("Enter an autojoiner interval from 1 through 2147483647 milliseconds.");
+                return;
+            }
+            if (checkbox_cs2fixes.Checked || checkbox_tools.Checked)
+            {
+                ShowAutojoinerError(
+                    "Disable CS2Fixes and workshop tools before starting the autojoiner.");
+                return;
+            }
+
+            string cs2Root = textbox_cs2_root.Text.Trim();
+            if (!Directory.Exists(cs2Root))
+            {
+                ShowAutojoinerError("Select a valid CS2 root directory first.");
+                return;
+            }
+
+            int playerThreshold = Decimal.ToInt32(num_autojoiner_threshold.Value);
+            int intervalMilliseconds = Decimal.ToInt32(num_autojoiner_interval.Value);
+            bool playSound = checkbox_autojoiner_sound.Checked;
+            IProgress<string> progress = new Progress<string>(AppendConsoleLine);
+
+            rich_console.Clear();
+            button_autojoiner_start.Enabled = false;
+            UseWaitCursor = true;
+            try
+            {
+                AppendConsoleLine("Preparing normal CS2 launch for autojoiner.");
+                await Task.Run(() => LaunchCS2.Launch(cs2Root, false, false, progress.Report));
+            }
+            catch (Exception error)
+            {
+                ShowAutojoinerError(error.Message);
+                return;
+            }
+            finally
+            {
+                UseWaitCursor = false;
+                button_autojoiner_start.Enabled = true;
+            }
+
+            var cancellation = new CancellationTokenSource();
+            autojoinerCancellation = cancellation;
+            SetAutojoinerRunning(true);
+            AppendConsoleLine("Starting autojoiner for " + serverHost + ":" + serverPort + ".");
+
+            autojoinerTask = RunAutojoinerAsync(
+                serverHost,
+                serverPort,
+                playerName,
+                playerThreshold,
+                intervalMilliseconds,
+                playSound,
+                cancellation.Token);
+
+            try
+            {
+                await autojoinerTask;
+            }
+            catch (OperationCanceledException)
+            {
+                AppendConsoleLine("Autojoiner stopped.");
+            }
+            finally
+            {
+                if (ReferenceEquals(autojoinerCancellation, cancellation))
+                {
+                    autojoinerCancellation = null;
+                    autojoinerTask = null;
+                }
+                cancellation.Dispose();
+                SetAutojoinerRunning(false);
+            }
+        }
+
+        private async Task RunAutojoinerAsync(
+            string serverHost,
+            int serverPort,
+            string playerName,
+            int playerThreshold,
+            int intervalMilliseconds,
+            bool playSound,
+            CancellationToken cancellationToken)
+        {
+            bool connectAttempted = false;
+            DateTime playerCheckUntil = DateTime.MinValue;
+
+            while (true)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                try
+                {
+                    SourceServerInfo info = await Task.Run(
+                        () => SourceServerQuery.QueryInfo(
+                            serverHost,
+                            serverPort,
+                            AutojoinerQueryTimeoutMilliseconds),
+                        cancellationToken);
+
+                    SetNumericValue(num_autojoiner_max, info.MaxPlayers);
+                    AppendConsoleLine(
+                        "[" + DateTime.Now.ToString("HH:mm:ss") + "] " + info.Map +
+                        " - player count: " + info.PlayerCount + "/" + info.MaxPlayers);
+
+                    if (connectAttempted)
+                    {
+                        AppendConsoleLine("Checking for '" + playerName + "'.");
+                        try
+                        {
+                            IList<string> players = await Task.Run(
+                                () => SourceServerQuery.QueryPlayers(
+                                    serverHost,
+                                    serverPort,
+                                    AutojoinerQueryTimeoutMilliseconds),
+                                cancellationToken);
+                            if (players.Any(name => string.Equals(
+                                name,
+                                playerName,
+                                StringComparison.OrdinalIgnoreCase)))
+                            {
+                                AppendConsoleLine(
+                                    "Detected player '" + playerName +
+                                    "' in server; stopping autojoiner.");
+                                if (playSound)
+                                {
+                                    await Task.Run(() => PlayBeeps(
+                                        new[] { 600, 800, 1000 },
+                                        new[] { 200, 200, 300 }));
+                                }
+                                return;
+                            }
+                        }
+                        catch (OperationCanceledException)
+                        {
+                            throw;
+                        }
+                        catch (Exception error)
+                        {
+                            AppendConsoleLine("Player query failed: " + error.Message);
+                        }
+                    }
+
+                    if (connectAttempted && DateTime.UtcNow >= playerCheckUntil)
+                    {
+                        connectAttempted = false;
+                    }
+
+                    if (info.PlayerCount < playerThreshold && !connectAttempted)
+                    {
+                        AppendConsoleLine(
+                            "Player count is below " + playerThreshold +
+                            "; attempting to connect.");
+                        LaunchCS2.ConnectToServer(serverHost, serverPort);
+                        if (playSound)
+                        {
+                            await Task.Run(() => PlayBeeps(
+                                new[] { 600, 600 },
+                                new[] { 200, 200 }));
+                        }
+                        connectAttempted = true;
+                        playerCheckUntil = DateTime.UtcNow.AddMilliseconds(
+                            AutojoinerConnectAttemptMilliseconds);
+                    }
+                }
+                catch (OperationCanceledException)
+                {
+                    throw;
+                }
+                catch (Exception error)
+                {
+                    AppendConsoleLine("Server query failed: " + error.Message);
+                }
+
+                await Task.Delay(intervalMilliseconds, cancellationToken);
+            }
+        }
+
+        private void SetAutojoinerRunning(bool running)
+        {
+            textbox_autojoiner_ip.Enabled = !running;
+            textbox_autojoiner_port.Enabled = !running;
+            textbox_autojoiner_username.Enabled = !running;
+            num_autojoiner_threshold.Enabled = !running;
+            num_autojoiner_max.Enabled = !running;
+            num_autojoiner_interval.Enabled = !running;
+            checkbox_autojoiner_sound.Enabled = !running;
+            checkbox_cs2fixes.Enabled = !running;
+            checkbox_tools.Enabled = !running;
+            button_launch_cs2.Enabled = !running;
+            button_autojoiner_start.Enabled = true;
+            button_autojoiner_start.Text = running ? "stop" : "start";
+        }
+
+        private void ShowAutojoinerError(string message)
+        {
+            AppendConsoleLine("ERROR: " + message);
+            MessageBox.Show(
+                this,
+                message,
+                "Autojoiner failed",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+        }
+
+        private static void SetNumericValue(NumericUpDown control, int value)
+        {
+            decimal bounded = Math.Max(control.Minimum, Math.Min(control.Maximum, value));
+            control.Value = bounded;
+        }
+
+        private static void PlayBeeps(int[] frequencies, int[] durations)
+        {
+            try
+            {
+                for (int index = 0; index < frequencies.Length && index < durations.Length; index++)
+                {
+                    Console.Beep(frequencies[index], durations[index]);
+                }
+            }
+            catch (Exception)
+            {
             }
         }
 
@@ -667,6 +951,11 @@ namespace cs2_things
         }
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkbox_autojoiner_sound_CheckedChanged(object sender, EventArgs e)
         {
 
         }
