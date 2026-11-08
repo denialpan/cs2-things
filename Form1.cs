@@ -14,6 +14,7 @@ namespace cs2_things
         public Form1()
         {
             InitializeComponent();
+            LoadProgramState();
 
             button_cs2_root_autodetect.Click += button_cs2_root_autodetect_Click;
             button_cs2_root.Click += button_cs2_root_Click;
@@ -25,6 +26,107 @@ namespace cs2_things
             button_gfl_ze_configs.Click += delegate { SelectZip(textbox_gfl_ze_configs, "Select the GFL CS2 ZE Configs zip"); };
             button_install.Click += button_install_Click;
             button_launch_cs2.Click += button_launch_cs2_Click;
+        }
+
+        private void LoadProgramState()
+        {
+            try
+            {
+                ProgramStateData state = ProgramStateConfig.Load();
+                textbox_cs2_root.Text = state.Cs2Root;
+                textbox_steamid64.Text = state.SteamId64;
+                textbox_cs2fixescfg.Text = state.Cs2FixesConfig;
+                textbox_metamod.Text = state.MetamodZip;
+                textbox_metamod_launcher.Text = state.MetamodLauncherZip;
+                textbox_cs2fixes.Text = state.Cs2FixesZip;
+                textbox_strippercs2.Text = state.StripperCs2Zip;
+                textbox_gfl_ze_configs.Text = state.GflZeConfigsZip;
+                checkbox_cs2fixes.Checked = state.LaunchWithCs2Fixes;
+                checkbox_tools.Checked = state.LaunchWorkshopTools;
+
+                if (state.SelectedTab >= 0 && state.SelectedTab < tab_main.TabCount)
+                {
+                    tab_main.SelectedIndex = state.SelectedTab;
+                }
+
+                if (state.HasWindowBounds)
+                {
+                    var savedBounds = new System.Drawing.Rectangle(
+                        state.WindowX,
+                        state.WindowY,
+                        Math.Max(state.WindowWidth, MinimumSize.Width),
+                        Math.Max(state.WindowHeight, MinimumSize.Height));
+
+                    bool visibleOnScreen = false;
+                    foreach (Screen screen in Screen.AllScreens)
+                    {
+                        if (screen.WorkingArea.IntersectsWith(savedBounds))
+                        {
+                            visibleOnScreen = true;
+                            break;
+                        }
+                    }
+
+                    if (visibleOnScreen)
+                    {
+                        StartPosition = FormStartPosition.Manual;
+                        Bounds = savedBounds;
+                    }
+                }
+
+                if (state.WindowState == FormWindowState.Maximized)
+                {
+                    WindowState = FormWindowState.Maximized;
+                }
+            }
+            catch (Exception error)
+            {
+                AppendConsoleLine("ERROR: Could not load config.ini: " + error.Message);
+            }
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            try
+            {
+                System.Drawing.Rectangle savedBounds = WindowState == FormWindowState.Normal
+                    ? Bounds
+                    : RestoreBounds;
+
+                ProgramStateConfig.Save(new ProgramStateData
+                {
+                    Cs2Root = textbox_cs2_root.Text.Trim(),
+                    SteamId64 = textbox_steamid64.Text.Trim(),
+                    Cs2FixesConfig = textbox_cs2fixescfg.Text.Trim(),
+                    MetamodZip = textbox_metamod.Text.Trim(),
+                    MetamodLauncherZip = textbox_metamod_launcher.Text.Trim(),
+                    Cs2FixesZip = textbox_cs2fixes.Text.Trim(),
+                    StripperCs2Zip = textbox_strippercs2.Text.Trim(),
+                    GflZeConfigsZip = textbox_gfl_ze_configs.Text.Trim(),
+                    LaunchWithCs2Fixes = checkbox_cs2fixes.Checked,
+                    LaunchWorkshopTools = checkbox_tools.Checked,
+                    SelectedTab = tab_main.SelectedIndex,
+                    HasWindowBounds = true,
+                    WindowX = savedBounds.X,
+                    WindowY = savedBounds.Y,
+                    WindowWidth = savedBounds.Width,
+                    WindowHeight = savedBounds.Height,
+                    WindowState = WindowState == FormWindowState.Maximized
+                        ? FormWindowState.Maximized
+                        : FormWindowState.Normal
+                });
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(
+                    this,
+                    "Could not save config.ini.\r\n\r\n" + error.Message,
+                    "Save settings failed",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+
+            base.OnFormClosing(e);
         }
 
         private async void button_launch_cs2_Click(object sender, EventArgs e)
@@ -105,25 +207,17 @@ namespace cs2_things
 
         private async void button_install_Click(object sender, EventArgs e)
         {
-            var request = new Cs2InstallationRequest
-            {
-                Cs2Root = textbox_cs2_root.Text.Trim(),
-                SteamId64 = textbox_steamid64.Text.Trim(),
-                Cs2FixesConfig = textbox_cs2fixescfg.Text.Trim(),
-                MetamodZip = textbox_metamod.Text.Trim(),
-                MetamodLauncherZip = textbox_metamod_launcher.Text.Trim(),
-                Cs2FixesZip = textbox_cs2fixes.Text.Trim(),
-                StripperCs2Zip = textbox_strippercs2.Text.Trim(),
-                GflZeConfigsZip = textbox_gfl_ze_configs.Text.Trim()
-            };
+            Cs2InstallationRequest request = CaptureInstallationRequest();
 
             button_install.Enabled = false;
+            SetInstallInputsEnabled(false);
             UseWaitCursor = true;
             rich_console.Clear();
             IProgress<string> progress = new Progress<string>(AppendConsoleLine);
 
             try
             {
+                AppendConsoleLine("Refreshing all installer inputs from the current form fields.");
                 IList<string> results = await Task.Run(
                     () => InstallCS2Fixes.Install(request, progress.Report));
                 MessageBox.Show(
@@ -157,7 +251,49 @@ namespace cs2_things
             finally
             {
                 UseWaitCursor = false;
+                SetInstallInputsEnabled(true);
                 button_install.Enabled = true;
+            }
+        }
+
+        private Cs2InstallationRequest CaptureInstallationRequest()
+        {
+            return new Cs2InstallationRequest
+            {
+                Cs2Root = textbox_cs2_root.Text.Trim(),
+                SteamId64 = textbox_steamid64.Text.Trim(),
+                Cs2FixesConfig = textbox_cs2fixescfg.Text.Trim(),
+                MetamodZip = textbox_metamod.Text.Trim(),
+                MetamodLauncherZip = textbox_metamod_launcher.Text.Trim(),
+                Cs2FixesZip = textbox_cs2fixes.Text.Trim(),
+                StripperCs2Zip = textbox_strippercs2.Text.Trim(),
+                GflZeConfigsZip = textbox_gfl_ze_configs.Text.Trim()
+            };
+        }
+
+        private void SetInstallInputsEnabled(bool enabled)
+        {
+            foreach (Control control in new Control[]
+            {
+                textbox_cs2_root,
+                textbox_steamid64,
+                textbox_cs2fixescfg,
+                textbox_metamod,
+                textbox_metamod_launcher,
+                textbox_cs2fixes,
+                textbox_strippercs2,
+                textbox_gfl_ze_configs,
+                button_cs2_root,
+                button_cs2_root_autodetect,
+                button_cs2fixescfg,
+                button_metamod,
+                button_metamod_launcher,
+                button_cs2fixes,
+                button_strippercs2,
+                button_gfl_ze_configs
+            })
+            {
+                control.Enabled = enabled;
             }
         }
 

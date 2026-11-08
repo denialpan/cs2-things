@@ -405,7 +405,7 @@ namespace cs2_things
             this.group_console.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.group_console.Location = new System.Drawing.Point(12, 318);
             this.group_console.Name = "group_console";
-            this.group_console.Size = new System.Drawing.Size(483, 126);
+            this.group_console.Size = new System.Drawing.Size(483, 151);
             this.group_console.TabIndex = 4;
             this.group_console.TabStop = false;
             this.group_console.Text = "console";
@@ -420,7 +420,7 @@ namespace cs2_things
             this.rich_console.Location = new System.Drawing.Point(4, 23);
             this.rich_console.Name = "rich_console";
             this.rich_console.ReadOnly = true;
-            this.rich_console.Size = new System.Drawing.Size(473, 97);
+            this.rich_console.Size = new System.Drawing.Size(473, 122);
             this.rich_console.TabIndex = 0;
             this.rich_console.Text = "";
             // 
@@ -441,7 +441,7 @@ namespace cs2_things
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
-            this.ClientSize = new System.Drawing.Size(504, 456);
+            this.ClientSize = new System.Drawing.Size(504, 481);
             this.Controls.Add(this.group_console);
             this.Controls.Add(this.tab_main);
             this.Controls.Add(this.button_launch_cs2);

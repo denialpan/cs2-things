@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="InstallCS2Fixes.cs" />
     <Compile Include="LaunchCS2.cs" />
+    <Compile Include="ProgramStateConfig.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

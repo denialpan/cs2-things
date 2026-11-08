@@ -73,8 +73,6 @@ namespace cs2_things
             Report(progress, "Starting install.");
             ValidateRequest(request);
             Report(progress, "CS2 root: " + request.Cs2Root);
-            Report(progress, "steamID64 value found.");
-            Report(progress, "cs2fixes.cfg source: " + request.Cs2FixesConfig);
 
             var results = new List<string>();
             var installs = CreateInstallDefinitions(request);
@@ -121,6 +119,8 @@ namespace cs2_things
                     "Finished " + install.DisplayName + ": " + extractedCount + " files.");
             }
 
+            Report(progress, "Applying final CS2Fixes configuration overrides.");
+            Report(progress, "steamID64 value found.");
             string adminsPath = Path.Combine(
                 request.Cs2Root,
                 "game", "csgo", "addons", "cs2fixes", "configs", "admins.jsonc");
@@ -135,12 +135,13 @@ namespace cs2_things
 
             string configPath = Path.Combine(
                 request.Cs2Root,
-                "game", "csgo", "cfg", "cs2fixes", "cs2fixes.cfg");
+                "game", "csgo", "addons", "cs2fixes", "cfg", "cs2fixes.cfg");
+            Report(progress, "cs2fixes.cfg source: " + request.Cs2FixesConfig);
             Report(progress, "Copying cs2fixes.cfg to: " + configPath);
             Directory.CreateDirectory(Path.GetDirectoryName(configPath));
             File.Copy(request.Cs2FixesConfig, configPath, true);
             results.Add("cs2fixes.cfg: updated");
-            Report(progress, "Finished cs2fixes.cfg.");
+            Report(progress, "Finished cs2fixes.cfg: source file copied with overwrite enabled.");
 
             timer.Stop();
             Report(progress, "Install complete in " + timer.Elapsed.TotalSeconds.ToString("F2") + " seconds.");
