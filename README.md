@@ -4,7 +4,7 @@ This is a more lightweight version of a previous tool I made here: https://githu
 
 ![Alt text for the image](images/cs2-things_Nw3w8S1bW5.png)
 
-### Main features
+### Main intent
 - Streamline installing CS2Fixes locally for client.
 - Swap between opening CS2 Workshop Tools or the vanilla game, with CS2Fixes loaded for either.
 - Server auto joiner - auto connect to a CS2 server with configurable attempt intervals.
@@ -19,6 +19,7 @@ This is a more lightweight version of a previous tool I made here: https://githu
 -ip <host>    Autojoiner server IP address or hostname.
 -port <port>  Autojoiner server port from 1 through 65535.
 -name <name>  Player name used to detect a successful connection.
+-sounds       Play Autojoiner connection and success tones.
 -h, --help    Show this help text.
 ```
 

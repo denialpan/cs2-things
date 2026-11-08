@@ -153,7 +153,7 @@ namespace cs2_things
                         options.Name,
                         CliAutojoinerPlayerThreshold,
                         CliAutojoinerIntervalMilliseconds,
-                        true,
+                        options.Sounds,
                         null,
                         Console.WriteLine,
                         cancellation.Token).GetAwaiter().GetResult();
@@ -201,7 +201,7 @@ namespace cs2_things
             Console.WriteLine("  cs2-things.exe -gui");
             Console.WriteLine("  cs2-things.exe -vanilla");
             Console.WriteLine("  cs2-things.exe [-cs2fixes] [-tools]");
-            Console.WriteLine("  cs2-things.exe -autojoiner -ip <host> -port <port> -name <player>");
+            Console.WriteLine("  cs2-things.exe -autojoiner -ip <host> -port <port> -name <player> [-sounds]");
             Console.WriteLine();
             Console.WriteLine("Valid flags:");
             Console.WriteLine("  -gui          Launch the graphical interface.");
@@ -212,6 +212,7 @@ namespace cs2_things
             Console.WriteLine("  -ip <host>    Autojoiner server IP address or hostname.");
             Console.WriteLine("  -port <port>  Autojoiner server port from 1 through 65535.");
             Console.WriteLine("  -name <name>  Player name used to detect a successful connection.");
+            Console.WriteLine("  -sounds       Play Autojoiner connection and success tones.");
             Console.WriteLine("  -h, --help    Show this help text.");
             Console.WriteLine();
             Console.WriteLine("With no flags, the graphical interface is launched.");
@@ -225,6 +226,7 @@ namespace cs2_things
             public bool Tools { get; private set; }
             public bool Cs2Fixes { get; private set; }
             public bool Autojoiner { get; private set; }
+            public bool Sounds { get; private set; }
             public bool Help { get; private set; }
             public string Ip { get; private set; }
             public int? Port { get; private set; }
@@ -257,6 +259,9 @@ namespace cs2_things
                             break;
                         case "-autojoiner":
                             options.Autojoiner = true;
+                            break;
+                        case "-sounds":
+                            options.Sounds = true;
                             break;
                         case "-h":
                         case "--help":
@@ -300,6 +305,7 @@ namespace cs2_things
 
                 bool autojoinerFlagPresent =
                     options.Autojoiner ||
+                    options.Sounds ||
                     options.Ip != null ||
                     options.Port.HasValue ||
                     options.Name != null;
@@ -312,6 +318,12 @@ namespace cs2_things
                 if (autojoinerFlagPresent && (options.Tools || options.Cs2Fixes))
                 {
                     error = "Autojoiner flags cannot be combined with -tools or -cs2fixes.";
+                    return false;
+                }
+
+                if (options.Sounds && !options.Autojoiner)
+                {
+                    error = "-sounds can only be used with -autojoiner.";
                     return false;
                 }
 

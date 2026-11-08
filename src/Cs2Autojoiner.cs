@@ -12,7 +12,7 @@ namespace cs2_things
         private const int QueryTimeoutMilliseconds = 3000;
         private const int ConnectAttemptMilliseconds = 10000;
 
-        [DllImport("kernel32.dll", SetLastError = true)]
+        [DllImport("kernel32.dll", EntryPoint = "Beep", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool NativeBeep(uint frequency, uint duration);
 
