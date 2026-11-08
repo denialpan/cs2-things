@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -66,9 +67,14 @@ namespace cs2_things
                 { "strippercs2", "addons/StripperCS2/bin/StripperCS2.dll" }
             };
 
-        public static IList<string> Install(Cs2InstallationRequest request)
+        public static IList<string> Install(Cs2InstallationRequest request, Action<string> progress = null)
         {
+            var timer = Stopwatch.StartNew();
+            Report(progress, "Starting install.");
             ValidateRequest(request);
+            Report(progress, "CS2 root: " + request.Cs2Root);
+            Report(progress, "steamID64 value found.");
+            Report(progress, "cs2fixes.cfg source: " + request.Cs2FixesConfig);
 
             var results = new List<string>();
             var installs = CreateInstallDefinitions(request);
@@ -76,8 +82,22 @@ namespace cs2_things
             foreach (InstallDefinition install in installs)
             {
                 string targetDirectory = Path.Combine(request.Cs2Root, install.TargetPath);
-                Directory.CreateDirectory(targetDirectory);
+                Report(progress, "Preparing " + install.DisplayName + ".");
+                Report(progress, "Target: " + targetDirectory);
 
+                if (!Directory.Exists(targetDirectory))
+                {
+                    Report(progress, "Creating target directory: " + targetDirectory);
+                    Directory.CreateDirectory(targetDirectory);
+                }
+
+                Report(progress, "Extracting from: " + install.ZipPath);
+                if (install.SourcePrefix != null)
+                {
+                    Report(progress, "Zip folder filter: " + install.SourcePrefix);
+                }
+
+                Report(progress, "Verifying zip contents for " + install.DisplayName + ".");
                 ValidateZipContents(install.ZipPath, install.DisplayName);
                 int extractedCount = ExtractZipOverwrite(
                     install.ZipPath,
@@ -96,26 +116,44 @@ namespace cs2_things
                 results.Add(
                     install.DisplayName + ": " + extractedCount +
                     " files to " + install.TargetPath);
+                Report(
+                    progress,
+                    "Finished " + install.DisplayName + ": " + extractedCount + " files.");
             }
 
             string adminsPath = Path.Combine(
                 request.Cs2Root,
                 "game", "csgo", "addons", "cs2fixes", "configs", "admins.jsonc");
+            Report(progress, "Writing admins.jsonc: " + adminsPath);
             Directory.CreateDirectory(Path.GetDirectoryName(adminsPath));
             File.WriteAllText(
                 adminsPath,
                 AdminsTemplate.Replace("<id here>", request.SteamId64),
                 new UTF8Encoding(false));
             results.Add("admins.jsonc: steamID64 updated");
+            Report(progress, "Finished admins.jsonc.");
 
             string configPath = Path.Combine(
                 request.Cs2Root,
                 "game", "csgo", "cfg", "cs2fixes", "cs2fixes.cfg");
+            Report(progress, "Copying cs2fixes.cfg to: " + configPath);
             Directory.CreateDirectory(Path.GetDirectoryName(configPath));
             File.Copy(request.Cs2FixesConfig, configPath, true);
             results.Add("cs2fixes.cfg: updated");
+            Report(progress, "Finished cs2fixes.cfg.");
+
+            timer.Stop();
+            Report(progress, "Install complete in " + timer.Elapsed.TotalSeconds.ToString("F2") + " seconds.");
 
             return results;
+        }
+
+        private static void Report(Action<string> progress, string message)
+        {
+            if (progress != null)
+            {
+                progress(message);
+            }
         }
 
         private static void ValidateRequest(Cs2InstallationRequest request)

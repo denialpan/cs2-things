@@ -23,6 +23,12 @@ namespace cs2_things
             this.button_launch_cs2 = new System.Windows.Forms.Button();
             this.tab_main = new System.Windows.Forms.TabControl();
             this.tabpage_cs2fixes = new System.Windows.Forms.TabPage();
+            this.linkLabel5 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel6 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.button_install = new System.Windows.Forms.Button();
             this.button_cs2_root_autodetect = new System.Windows.Forms.Button();
@@ -43,14 +49,11 @@ namespace cs2_things
             this.label_cs2_root = new System.Windows.Forms.Label();
             this.textbox_cs2_root = new System.Windows.Forms.TextBox();
             this.tabpage_autojoiner = new System.Windows.Forms.TabPage();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel5 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel6 = new System.Windows.Forms.LinkLabel();
+            this.group_console = new System.Windows.Forms.GroupBox();
+            this.rich_console = new System.Windows.Forms.RichTextBox();
             this.tab_main.SuspendLayout();
             this.tabpage_cs2fixes.SuspendLayout();
+            this.group_console.SuspendLayout();
             this.SuspendLayout();
             // 
             // checkbox_tools
@@ -79,7 +82,7 @@ namespace cs2_things
             // 
             this.button_launch_cs2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button_launch_cs2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_launch_cs2.Location = new System.Drawing.Point(461, 9);
+            this.button_launch_cs2.Location = new System.Drawing.Point(418, 9);
             this.button_launch_cs2.Margin = new System.Windows.Forms.Padding(0);
             this.button_launch_cs2.Name = "button_launch_cs2";
             this.button_launch_cs2.Size = new System.Drawing.Size(77, 23);
@@ -89,8 +92,7 @@ namespace cs2_things
             // 
             // tab_main
             // 
-            this.tab_main.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tab_main.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tab_main.Controls.Add(this.tabpage_cs2fixes);
             this.tab_main.Controls.Add(this.tabpage_autojoiner);
@@ -98,7 +100,7 @@ namespace cs2_things
             this.tab_main.Location = new System.Drawing.Point(12, 38);
             this.tab_main.Name = "tab_main";
             this.tab_main.SelectedIndex = 0;
-            this.tab_main.Size = new System.Drawing.Size(523, 277);
+            this.tab_main.Size = new System.Drawing.Size(483, 277);
             this.tab_main.TabIndex = 3;
             // 
             // tabpage_cs2fixes
@@ -131,10 +133,82 @@ namespace cs2_things
             this.tabpage_cs2fixes.Location = new System.Drawing.Point(4, 24);
             this.tabpage_cs2fixes.Name = "tabpage_cs2fixes";
             this.tabpage_cs2fixes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpage_cs2fixes.Size = new System.Drawing.Size(515, 249);
+            this.tabpage_cs2fixes.Size = new System.Drawing.Size(475, 249);
             this.tabpage_cs2fixes.TabIndex = 0;
             this.tabpage_cs2fixes.Text = "cs2fixes";
             this.tabpage_cs2fixes.UseVisualStyleBackColor = true;
+            // 
+            // linkLabel5
+            // 
+            this.linkLabel5.AutoSize = true;
+            this.linkLabel5.Location = new System.Drawing.Point(6, 188);
+            this.linkLabel5.Name = "linkLabel5";
+            this.linkLabel5.Size = new System.Drawing.Size(97, 15);
+            this.linkLabel5.TabIndex = 33;
+            this.linkLabel5.TabStop = true;
+            this.linkLabel5.Tag = "https://github.com/gflze/CS2-ZE-Configs/";
+            this.linkLabel5.Text = "gfl cs2 ze configs";
+            this.linkLabel5.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.downloadLink_LinkClicked);
+            // 
+            // linkLabel6
+            // 
+            this.linkLabel6.AutoSize = true;
+            this.linkLabel6.Location = new System.Drawing.Point(6, 162);
+            this.linkLabel6.Name = "linkLabel6";
+            this.linkLabel6.Size = new System.Drawing.Size(64, 15);
+            this.linkLabel6.TabIndex = 32;
+            this.linkLabel6.TabStop = true;
+            this.linkLabel6.Tag = "https://github.com/Source2ZE/StripperCS2/releases";
+            this.linkLabel6.Text = "strippercs2";
+            this.linkLabel6.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.downloadLink_LinkClicked);
+            // 
+            // linkLabel3
+            // 
+            this.linkLabel3.AutoSize = true;
+            this.linkLabel3.Location = new System.Drawing.Point(6, 136);
+            this.linkLabel3.Name = "linkLabel3";
+            this.linkLabel3.Size = new System.Drawing.Size(47, 15);
+            this.linkLabel3.TabIndex = 31;
+            this.linkLabel3.TabStop = true;
+            this.linkLabel3.Tag = "https://github.com/Source2ZE/CS2Fixes/actions";
+            this.linkLabel3.Text = "cs2fixes";
+            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.downloadLink_LinkClicked);
+            // 
+            // linkLabel4
+            // 
+            this.linkLabel4.AutoSize = true;
+            this.linkLabel4.Location = new System.Drawing.Point(6, 110);
+            this.linkLabel4.Name = "linkLabel4";
+            this.linkLabel4.Size = new System.Drawing.Size(108, 15);
+            this.linkLabel4.TabIndex = 30;
+            this.linkLabel4.TabStop = true;
+            this.linkLabel4.Tag = "https://github.com/Poggicek/metamod-launcher/releases";
+            this.linkLabel4.Text = "metamod launcher";
+            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.downloadLink_LinkClicked);
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Location = new System.Drawing.Point(6, 85);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(59, 15);
+            this.linkLabel2.TabIndex = 29;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Tag = "https://www.metamodsource.net/downloads.php?branch=dev";
+            this.linkLabel2.Text = "metamod";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.downloadLink_LinkClicked);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(6, 59);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(67, 15);
+            this.linkLabel1.TabIndex = 28;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Tag = "https://pastebin.com/NUNWgZAY";
+            this.linkLabel1.Text = "cs2fixes.cfg";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.downloadLink_LinkClicked);
             // 
             // label1
             // 
@@ -148,7 +222,7 @@ namespace cs2_things
             // button_install
             // 
             this.button_install.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_install.Location = new System.Drawing.Point(434, 218);
+            this.button_install.Location = new System.Drawing.Point(394, 218);
             this.button_install.Name = "button_install";
             this.button_install.Size = new System.Drawing.Size(75, 25);
             this.button_install.TabIndex = 27;
@@ -158,7 +232,7 @@ namespace cs2_things
             // button_cs2_root_autodetect
             // 
             this.button_cs2_root_autodetect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_cs2_root_autodetect.Location = new System.Drawing.Point(435, 7);
+            this.button_cs2_root_autodetect.Location = new System.Drawing.Point(395, 7);
             this.button_cs2_root_autodetect.Name = "button_cs2_root_autodetect";
             this.button_cs2_root_autodetect.Size = new System.Drawing.Size(41, 23);
             this.button_cs2_root_autodetect.TabIndex = 19;
@@ -168,7 +242,7 @@ namespace cs2_things
             // button_gfl_ze_configs
             // 
             this.button_gfl_ze_configs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_gfl_ze_configs.Location = new System.Drawing.Point(482, 187);
+            this.button_gfl_ze_configs.Location = new System.Drawing.Point(442, 187);
             this.button_gfl_ze_configs.Name = "button_gfl_ze_configs";
             this.button_gfl_ze_configs.Size = new System.Drawing.Size(27, 23);
             this.button_gfl_ze_configs.TabIndex = 18;
@@ -182,13 +256,13 @@ namespace cs2_things
             this.textbox_gfl_ze_configs.Location = new System.Drawing.Point(127, 188);
             this.textbox_gfl_ze_configs.Multiline = true;
             this.textbox_gfl_ze_configs.Name = "textbox_gfl_ze_configs";
-            this.textbox_gfl_ze_configs.Size = new System.Drawing.Size(349, 20);
+            this.textbox_gfl_ze_configs.Size = new System.Drawing.Size(309, 20);
             this.textbox_gfl_ze_configs.TabIndex = 17;
             // 
             // button_strippercs2
             // 
             this.button_strippercs2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_strippercs2.Location = new System.Drawing.Point(482, 161);
+            this.button_strippercs2.Location = new System.Drawing.Point(442, 161);
             this.button_strippercs2.Name = "button_strippercs2";
             this.button_strippercs2.Size = new System.Drawing.Size(27, 23);
             this.button_strippercs2.TabIndex = 16;
@@ -202,13 +276,13 @@ namespace cs2_things
             this.textbox_strippercs2.Location = new System.Drawing.Point(127, 162);
             this.textbox_strippercs2.Multiline = true;
             this.textbox_strippercs2.Name = "textbox_strippercs2";
-            this.textbox_strippercs2.Size = new System.Drawing.Size(349, 20);
+            this.textbox_strippercs2.Size = new System.Drawing.Size(309, 20);
             this.textbox_strippercs2.TabIndex = 15;
             // 
             // button_cs2fixes
             // 
             this.button_cs2fixes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_cs2fixes.Location = new System.Drawing.Point(482, 135);
+            this.button_cs2fixes.Location = new System.Drawing.Point(442, 135);
             this.button_cs2fixes.Name = "button_cs2fixes";
             this.button_cs2fixes.Size = new System.Drawing.Size(27, 23);
             this.button_cs2fixes.TabIndex = 14;
@@ -222,13 +296,13 @@ namespace cs2_things
             this.textbox_cs2fixes.Location = new System.Drawing.Point(127, 136);
             this.textbox_cs2fixes.Multiline = true;
             this.textbox_cs2fixes.Name = "textbox_cs2fixes";
-            this.textbox_cs2fixes.Size = new System.Drawing.Size(349, 20);
+            this.textbox_cs2fixes.Size = new System.Drawing.Size(309, 20);
             this.textbox_cs2fixes.TabIndex = 13;
             // 
             // button_metamod_launcher
             // 
             this.button_metamod_launcher.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_metamod_launcher.Location = new System.Drawing.Point(482, 109);
+            this.button_metamod_launcher.Location = new System.Drawing.Point(442, 109);
             this.button_metamod_launcher.Name = "button_metamod_launcher";
             this.button_metamod_launcher.Size = new System.Drawing.Size(27, 23);
             this.button_metamod_launcher.TabIndex = 12;
@@ -242,13 +316,13 @@ namespace cs2_things
             this.textbox_metamod_launcher.Location = new System.Drawing.Point(127, 110);
             this.textbox_metamod_launcher.Multiline = true;
             this.textbox_metamod_launcher.Name = "textbox_metamod_launcher";
-            this.textbox_metamod_launcher.Size = new System.Drawing.Size(349, 20);
+            this.textbox_metamod_launcher.Size = new System.Drawing.Size(309, 20);
             this.textbox_metamod_launcher.TabIndex = 11;
             // 
             // button_metamod
             // 
             this.button_metamod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_metamod.Location = new System.Drawing.Point(482, 84);
+            this.button_metamod.Location = new System.Drawing.Point(442, 84);
             this.button_metamod.Name = "button_metamod";
             this.button_metamod.Size = new System.Drawing.Size(27, 23);
             this.button_metamod.TabIndex = 10;
@@ -262,13 +336,13 @@ namespace cs2_things
             this.textbox_metamod.Location = new System.Drawing.Point(127, 85);
             this.textbox_metamod.Multiline = true;
             this.textbox_metamod.Name = "textbox_metamod";
-            this.textbox_metamod.Size = new System.Drawing.Size(349, 20);
+            this.textbox_metamod.Size = new System.Drawing.Size(309, 20);
             this.textbox_metamod.TabIndex = 9;
             // 
             // button_cs2fixescfg
             // 
             this.button_cs2fixescfg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_cs2fixescfg.Location = new System.Drawing.Point(482, 58);
+            this.button_cs2fixescfg.Location = new System.Drawing.Point(442, 58);
             this.button_cs2fixescfg.Name = "button_cs2fixescfg";
             this.button_cs2fixescfg.Size = new System.Drawing.Size(27, 23);
             this.button_cs2fixescfg.TabIndex = 8;
@@ -282,7 +356,7 @@ namespace cs2_things
             this.textbox_cs2fixescfg.Location = new System.Drawing.Point(127, 59);
             this.textbox_cs2fixescfg.Multiline = true;
             this.textbox_cs2fixescfg.Name = "textbox_cs2fixescfg";
-            this.textbox_cs2fixescfg.Size = new System.Drawing.Size(349, 20);
+            this.textbox_cs2fixescfg.Size = new System.Drawing.Size(309, 20);
             this.textbox_cs2fixescfg.TabIndex = 7;
             // 
             // textbox_steamid64
@@ -292,13 +366,13 @@ namespace cs2_things
             this.textbox_steamid64.Location = new System.Drawing.Point(127, 33);
             this.textbox_steamid64.Multiline = true;
             this.textbox_steamid64.Name = "textbox_steamid64";
-            this.textbox_steamid64.Size = new System.Drawing.Size(382, 20);
+            this.textbox_steamid64.Size = new System.Drawing.Size(342, 20);
             this.textbox_steamid64.TabIndex = 4;
             // 
             // button_cs2_root
             // 
             this.button_cs2_root.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_cs2_root.Location = new System.Drawing.Point(482, 7);
+            this.button_cs2_root.Location = new System.Drawing.Point(442, 7);
             this.button_cs2_root.Name = "button_cs2_root";
             this.button_cs2_root.Size = new System.Drawing.Size(27, 23);
             this.button_cs2_root.TabIndex = 3;
@@ -321,7 +395,7 @@ namespace cs2_things
             this.textbox_cs2_root.Location = new System.Drawing.Point(127, 8);
             this.textbox_cs2_root.Multiline = true;
             this.textbox_cs2_root.Name = "textbox_cs2_root";
-            this.textbox_cs2_root.Size = new System.Drawing.Size(302, 20);
+            this.textbox_cs2_root.Size = new System.Drawing.Size(262, 20);
             this.textbox_cs2_root.TabIndex = 0;
             // 
             // tabpage_autojoiner
@@ -334,84 +408,41 @@ namespace cs2_things
             this.tabpage_autojoiner.Text = "autojoiner";
             this.tabpage_autojoiner.UseVisualStyleBackColor = true;
             // 
-            // linkLabel1
+            // group_console
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(6, 59);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(60, 15);
-            this.linkLabel1.TabIndex = 28;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Tag = "https://pastebin.com/NUNWgZAY";
-            this.linkLabel1.Text = "cs2fixes.cfg";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.downloadLink_LinkClicked);
-            //
-            // linkLabel2
-            //
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(6, 85);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(60, 15);
-            this.linkLabel2.TabIndex = 29;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Tag = "https://www.metamodsource.net/downloads.php?branch=dev";
-            this.linkLabel2.Text = "metamod";
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.downloadLink_LinkClicked);
-            //
-            // linkLabel3
-            //
-            this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(6, 136);
-            this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(60, 15);
-            this.linkLabel3.TabIndex = 31;
-            this.linkLabel3.TabStop = true;
-            this.linkLabel3.Tag = "https://github.com/Source2ZE/CS2Fixes/actions";
-            this.linkLabel3.Text = "cs2fixes";
-            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.downloadLink_LinkClicked);
-            //
-            // linkLabel4
-            //
-            this.linkLabel4.AutoSize = true;
-            this.linkLabel4.Location = new System.Drawing.Point(6, 110);
-            this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.Size = new System.Drawing.Size(60, 15);
-            this.linkLabel4.TabIndex = 30;
-            this.linkLabel4.TabStop = true;
-            this.linkLabel4.Tag = "https://github.com/Poggicek/metamod-launcher/releases";
-            this.linkLabel4.Text = "metamod launcher";
-            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.downloadLink_LinkClicked);
-            //
-            // linkLabel5
-            //
-            this.linkLabel5.AutoSize = true;
-            this.linkLabel5.Location = new System.Drawing.Point(6, 188);
-            this.linkLabel5.Name = "linkLabel5";
-            this.linkLabel5.Size = new System.Drawing.Size(60, 15);
-            this.linkLabel5.TabIndex = 33;
-            this.linkLabel5.TabStop = true;
-            this.linkLabel5.Tag = "https://github.com/gflze/CS2-ZE-Configs/";
-            this.linkLabel5.Text = "gfl cs2 ze configs";
-            this.linkLabel5.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.downloadLink_LinkClicked);
-            //
-            // linkLabel6
-            //
-            this.linkLabel6.AutoSize = true;
-            this.linkLabel6.Location = new System.Drawing.Point(6, 162);
-            this.linkLabel6.Name = "linkLabel6";
-            this.linkLabel6.Size = new System.Drawing.Size(60, 15);
-            this.linkLabel6.TabIndex = 32;
-            this.linkLabel6.TabStop = true;
-            this.linkLabel6.Tag = "https://github.com/Source2ZE/StripperCS2/releases";
-            this.linkLabel6.Text = "strippercs2";
-            this.linkLabel6.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.downloadLink_LinkClicked);
+            this.group_console.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.group_console.Controls.Add(this.rich_console);
+            this.group_console.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.group_console.Location = new System.Drawing.Point(12, 318);
+            this.group_console.Name = "group_console";
+            this.group_console.Size = new System.Drawing.Size(483, 126);
+            this.group_console.TabIndex = 4;
+            this.group_console.TabStop = false;
+            this.group_console.Text = "console";
+            // 
+            // rich_console
+            // 
+            this.rich_console.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rich_console.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rich_console.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rich_console.Location = new System.Drawing.Point(4, 23);
+            this.rich_console.Name = "rich_console";
+            this.rich_console.ReadOnly = true;
+            this.rich_console.Size = new System.Drawing.Size(473, 97);
+            this.rich_console.TabIndex = 0;
+            this.rich_console.Text = "";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
-            this.ClientSize = new System.Drawing.Size(547, 331);
+            this.ClientSize = new System.Drawing.Size(504, 456);
+            this.Controls.Add(this.group_console);
             this.Controls.Add(this.tab_main);
             this.Controls.Add(this.button_launch_cs2);
             this.Controls.Add(this.checkbox_cs2fixes);
@@ -424,6 +455,7 @@ namespace cs2_things
             this.tab_main.ResumeLayout(false);
             this.tabpage_cs2fixes.ResumeLayout(false);
             this.tabpage_cs2fixes.PerformLayout();
+            this.group_console.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -462,5 +494,7 @@ namespace cs2_things
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.LinkLabel linkLabel4;
         private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.GroupBox group_console;
+        private System.Windows.Forms.RichTextBox rich_console;
     }
 }

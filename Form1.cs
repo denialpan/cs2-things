@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
@@ -51,7 +52,7 @@ namespace cs2_things
             }
         }
 
-        private void button_install_Click(object sender, EventArgs e)
+        private async void button_install_Click(object sender, EventArgs e)
         {
             var request = new Cs2InstallationRequest
             {
@@ -67,10 +68,13 @@ namespace cs2_things
 
             button_install.Enabled = false;
             UseWaitCursor = true;
+            rich_console.Clear();
+            IProgress<string> progress = new Progress<string>(AppendConsoleLine);
 
             try
             {
-                IList<string> results = InstallCS2Fixes.Install(request);
+                IList<string> results = await Task.Run(
+                    () => InstallCS2Fixes.Install(request, progress.Report));
                 MessageBox.Show(
                     this,
                     "Installation completed successfully.\r\n\r\n" +
@@ -81,6 +85,7 @@ namespace cs2_things
             }
             catch (Cs2InstallationException error)
             {
+                AppendConsoleLine("ERROR: " + error.Message);
                 MessageBox.Show(
                     this,
                     error.Message,
@@ -90,6 +95,7 @@ namespace cs2_things
             }
             catch (Exception error)
             {
+                AppendConsoleLine("ERROR: " + error.Message);
                 MessageBox.Show(
                     this,
                     "Could not complete the installation.\r\n\r\n" + error.Message,
@@ -102,6 +108,31 @@ namespace cs2_things
                 UseWaitCursor = false;
                 button_install.Enabled = true;
             }
+        }
+
+        private void AppendConsoleLine(string message)
+        {
+            if (rich_console.IsDisposed)
+            {
+                return;
+            }
+
+            System.Drawing.Color messageColor = rich_console.ForeColor;
+            if (message.StartsWith("ERROR:", StringComparison.OrdinalIgnoreCase))
+            {
+                messageColor = System.Drawing.Color.Firebrick;
+            }
+            else if (message.StartsWith("Install complete", StringComparison.OrdinalIgnoreCase))
+            {
+                messageColor = System.Drawing.Color.ForestGreen;
+            }
+
+            rich_console.SelectionStart = rich_console.TextLength;
+            rich_console.SelectionLength = 0;
+            rich_console.SelectionColor = messageColor;
+            rich_console.AppendText(message + Environment.NewLine);
+            rich_console.SelectionColor = rich_console.ForeColor;
+            rich_console.ScrollToCaret();
         }
 
         private void button_cs2_root_autodetect_Click(object sender, EventArgs e)
