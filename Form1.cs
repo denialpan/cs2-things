@@ -27,6 +27,26 @@ namespace cs2_things
             button_install.Click += button_install_Click;
             button_uninstall.Click += button_uninstall_Click;
             button_launch_cs2.Click += button_launch_cs2_Click;
+            tab_main.SelectedIndexChanged += tab_main_SelectedIndexChanged;
+            UpdateMinimumHeightForSelectedTab();
+        }
+
+        private void tab_main_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateMinimumHeightForSelectedTab();
+        }
+
+        private void UpdateMinimumHeightForSelectedTab()
+        {
+            bool autojoinerSelected = tab_main.SelectedTab == tabpage_autojoiner;
+            MinimumSize = new System.Drawing.Size(
+                MinimumSize.Width,
+                autojoinerSelected ? 413 : 547);
+
+            if (autojoinerSelected)
+            {
+                Height = 413;
+            }
         }
 
         private async void button_uninstall_Click(object sender, EventArgs e)

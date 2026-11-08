@@ -103,7 +103,7 @@ namespace cs2_things
             this.tab_main.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tab_main.Location = new System.Drawing.Point(12, 38);
             this.tab_main.MaximumSize = new System.Drawing.Size(9999, 9999);
-            this.tab_main.MinimumSize = new System.Drawing.Size(480, 273);
+            this.tab_main.MinimumSize = new System.Drawing.Size(480, 67);
             this.tab_main.Name = "tab_main";
             this.tab_main.SelectedIndex = 0;
             this.tab_main.Size = new System.Drawing.Size(480, 273);
@@ -431,7 +431,7 @@ namespace cs2_things
             this.tabpage_autojoiner.Location = new System.Drawing.Point(4, 24);
             this.tabpage_autojoiner.Name = "tabpage_autojoiner";
             this.tabpage_autojoiner.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpage_autojoiner.Size = new System.Drawing.Size(472, 287);
+            this.tabpage_autojoiner.Size = new System.Drawing.Size(472, 245);
             this.tabpage_autojoiner.TabIndex = 1;
             this.tabpage_autojoiner.Text = "autojoiner";
             this.tabpage_autojoiner.UseVisualStyleBackColor = true;
