@@ -20,7 +20,6 @@ namespace cs2_things
         {
             this.checkbox_tools = new System.Windows.Forms.CheckBox();
             this.checkbox_cs2fixes = new System.Windows.Forms.CheckBox();
-            this.button_launch_cs2 = new System.Windows.Forms.Button();
             this.tab_main = new System.Windows.Forms.TabControl();
             this.tabpage_cs2fixes = new System.Windows.Forms.TabPage();
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
@@ -51,6 +50,7 @@ namespace cs2_things
             this.tabpage_autojoiner = new System.Windows.Forms.TabPage();
             this.group_console = new System.Windows.Forms.GroupBox();
             this.rich_console = new System.Windows.Forms.RichTextBox();
+            this.button_launch_cs2 = new System.Windows.Forms.Button();
             this.tab_main.SuspendLayout();
             this.tabpage_cs2fixes.SuspendLayout();
             this.group_console.SuspendLayout();
@@ -77,18 +77,6 @@ namespace cs2_things
             this.checkbox_cs2fixes.TabIndex = 1;
             this.checkbox_cs2fixes.Text = "launch with cs2fixes";
             this.checkbox_cs2fixes.UseVisualStyleBackColor = true;
-            // 
-            // button_launch_cs2
-            // 
-            this.button_launch_cs2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_launch_cs2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_launch_cs2.Location = new System.Drawing.Point(418, 9);
-            this.button_launch_cs2.Margin = new System.Windows.Forms.Padding(0);
-            this.button_launch_cs2.Name = "button_launch_cs2";
-            this.button_launch_cs2.Size = new System.Drawing.Size(77, 23);
-            this.button_launch_cs2.TabIndex = 2;
-            this.button_launch_cs2.Text = "launch cs2";
-            this.button_launch_cs2.UseVisualStyleBackColor = true;
             // 
             // tab_main
             // 
@@ -403,7 +391,7 @@ namespace cs2_things
             this.tabpage_autojoiner.Location = new System.Drawing.Point(4, 24);
             this.tabpage_autojoiner.Name = "tabpage_autojoiner";
             this.tabpage_autojoiner.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpage_autojoiner.Size = new System.Drawing.Size(515, 249);
+            this.tabpage_autojoiner.Size = new System.Drawing.Size(475, 249);
             this.tabpage_autojoiner.TabIndex = 1;
             this.tabpage_autojoiner.Text = "autojoiner";
             this.tabpage_autojoiner.UseVisualStyleBackColor = true;
@@ -436,6 +424,18 @@ namespace cs2_things
             this.rich_console.TabIndex = 0;
             this.rich_console.Text = "";
             // 
+            // button_launch_cs2
+            // 
+            this.button_launch_cs2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_launch_cs2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_launch_cs2.Location = new System.Drawing.Point(414, 9);
+            this.button_launch_cs2.Margin = new System.Windows.Forms.Padding(0);
+            this.button_launch_cs2.Name = "button_launch_cs2";
+            this.button_launch_cs2.Size = new System.Drawing.Size(77, 26);
+            this.button_launch_cs2.TabIndex = 2;
+            this.button_launch_cs2.Text = "launch cs2";
+            this.button_launch_cs2.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -465,7 +465,6 @@ namespace cs2_things
 
         private System.Windows.Forms.CheckBox checkbox_tools;
         private System.Windows.Forms.CheckBox checkbox_cs2fixes;
-        private System.Windows.Forms.Button button_launch_cs2;
         private System.Windows.Forms.TabControl tab_main;
         private System.Windows.Forms.TabPage tabpage_cs2fixes;
         private System.Windows.Forms.TabPage tabpage_autojoiner;
@@ -496,5 +495,6 @@ namespace cs2_things
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.GroupBox group_console;
         private System.Windows.Forms.RichTextBox rich_console;
+        private System.Windows.Forms.Button button_launch_cs2;
     }
 }

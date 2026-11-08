@@ -24,6 +24,57 @@ namespace cs2_things
             button_strippercs2.Click += delegate { SelectZip(textbox_strippercs2, "Select the StripperCS2 zip"); };
             button_gfl_ze_configs.Click += delegate { SelectZip(textbox_gfl_ze_configs, "Select the GFL CS2 ZE Configs zip"); };
             button_install.Click += button_install_Click;
+            button_launch_cs2.Click += button_launch_cs2_Click;
+        }
+
+        private async void button_launch_cs2_Click(object sender, EventArgs e)
+        {
+            string cs2Root = textbox_cs2_root.Text.Trim();
+            bool launchWithCs2Fixes = checkbox_cs2fixes.Checked;
+            bool launchWorkshopTools = checkbox_tools.Checked;
+            IProgress<string> progress = new Progress<string>(AppendConsoleLine);
+
+            rich_console.Clear();
+            button_launch_cs2.Enabled = false;
+            UseWaitCursor = true;
+
+            try
+            {
+                await Task.Run(() => LaunchCS2.Launch(
+                    cs2Root,
+                    launchWithCs2Fixes,
+                    launchWorkshopTools,
+                    progress.Report));
+            }
+            catch (FileNotFoundException error)
+            {
+                string missingFile = string.IsNullOrWhiteSpace(error.FileName)
+                    ? error.Message
+                    : error.FileName;
+                string message = "Could not find required file: " + missingFile;
+                AppendConsoleLine("ERROR: " + message);
+                MessageBox.Show(
+                    this,
+                    message,
+                    "Launch failed",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            catch (Exception error)
+            {
+                AppendConsoleLine("ERROR: " + error.Message);
+                MessageBox.Show(
+                    this,
+                    error.Message,
+                    "Launch failed",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            finally
+            {
+                UseWaitCursor = false;
+                button_launch_cs2.Enabled = true;
+            }
         }
 
         private void SelectZip(TextBox target, string title)
