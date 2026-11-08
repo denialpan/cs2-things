@@ -33,5 +33,10 @@ This is a more lightweight version of a previous tool I made here: https://githu
 - admins.jsonc: https://pastebin.com/Ha83AvNw
 - cs2fixes.cfg: https://pastebin.com/NUNWgZAY
 
+### Disclaimer
+This program will get false flagged due to extracting .dlls and files into directories, mainly required for CS2Fixes to function properly. This program on its own does not provide or make requests to download these files, they will need to be manually sourced from https://github.com/denialpan/cs2-things#requirements or through the clickable GUI label links.
+
+Ensure that you download only from https://github.com/denialpan/cs2-things/releases.
+
 ### Credits
 Guide to offline ZE maps: <https://www.youtube.com/watch?v=lJW8SSoDsbo>
