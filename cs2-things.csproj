@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cs2Autojoiner.cs" />
     <Compile Include="InstallCS2Fixes.cs" />
     <Compile Include="InstallRollback.cs" />
     <Compile Include="LaunchCS2.cs" />

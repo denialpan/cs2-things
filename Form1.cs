@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,13 +12,6 @@ namespace cs2_things
 {
     public partial class Form1 : Form
     {
-        private const int AutojoinerQueryTimeoutMilliseconds = 3000;
-        private const int AutojoinerConnectAttemptMilliseconds = 10000;
-
-        [DllImport("kernel32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool NativeBeep(uint frequency, uint duration);
-
         private CancellationTokenSource autojoinerCancellation;
         private Task autojoinerTask;
 
@@ -372,13 +363,15 @@ namespace cs2_things
             SetAutojoinerRunning(true);
             AppendConsoleLine("Starting autojoiner for " + serverHost + ":" + serverPort + ".");
 
-            autojoinerTask = RunAutojoinerAsync(
+            autojoinerTask = Cs2Autojoiner.RunAsync(
                 serverHost,
                 serverPort,
                 playerName,
                 playerThreshold,
                 intervalMilliseconds,
                 playSound,
+                info => SetNumericValue(num_autojoiner_max, info.MaxPlayers),
+                AppendConsoleLine,
                 cancellation.Token);
 
             try
@@ -398,108 +391,6 @@ namespace cs2_things
                 }
                 cancellation.Dispose();
                 SetAutojoinerRunning(false);
-            }
-        }
-
-        private async Task RunAutojoinerAsync(
-            string serverHost,
-            int serverPort,
-            string playerName,
-            int playerThreshold,
-            int intervalMilliseconds,
-            bool playSound,
-            CancellationToken cancellationToken)
-        {
-            bool connectAttempted = false;
-            DateTime playerCheckUntil = DateTime.MinValue;
-
-            while (true)
-            {
-                cancellationToken.ThrowIfCancellationRequested();
-                try
-                {
-                    SourceServerInfo info = await Task.Run(
-                        () => SourceServerQuery.QueryInfo(
-                            serverHost,
-                            serverPort,
-                            AutojoinerQueryTimeoutMilliseconds),
-                        cancellationToken);
-
-                    SetNumericValue(num_autojoiner_max, info.MaxPlayers);
-                    AppendConsoleLine(
-                        "[" + DateTime.Now.ToString("HH:mm:ss") + "] " + info.Map +
-                        " - player count: " + info.PlayerCount + "/" + info.MaxPlayers);
-
-                    if (connectAttempted)
-                    {
-                        AppendConsoleLine("Checking for '" + playerName + "'.");
-                        try
-                        {
-                            IList<string> players = await Task.Run(
-                                () => SourceServerQuery.QueryPlayers(
-                                    serverHost,
-                                    serverPort,
-                                    AutojoinerQueryTimeoutMilliseconds),
-                                cancellationToken);
-                            if (players.Any(name => string.Equals(
-                                name,
-                                playerName,
-                                StringComparison.OrdinalIgnoreCase)))
-                            {
-                                AppendConsoleLine(
-                                    "Detected player '" + playerName +
-                                    "' in server; stopping autojoiner.");
-                                if (playSound)
-                                {
-                                    await Task.Run(() => PlayBeeps(
-                                        new[] { 600, 800, 1000 },
-                                        new[] { 200, 200, 300 }));
-                                }
-                                return;
-                            }
-                        }
-                        catch (OperationCanceledException)
-                        {
-                            throw;
-                        }
-                        catch (Exception error)
-                        {
-                            AppendConsoleLine("Player query failed: " + error.Message);
-                        }
-                    }
-
-                    if (connectAttempted && DateTime.UtcNow >= playerCheckUntil)
-                    {
-                        connectAttempted = false;
-                    }
-
-                    if (info.PlayerCount < playerThreshold && !connectAttempted)
-                    {
-                        AppendConsoleLine(
-                            "Player count is below " + playerThreshold +
-                            "; attempting to connect.");
-                        LaunchCS2.ConnectToServer(serverHost, serverPort);
-                        if (playSound)
-                        {
-                            await Task.Run(() => PlayBeeps(
-                                new[] { 600, 600 },
-                                new[] { 200, 200 }));
-                        }
-                        connectAttempted = true;
-                        playerCheckUntil = DateTime.UtcNow.AddMilliseconds(
-                            AutojoinerConnectAttemptMilliseconds);
-                    }
-                }
-                catch (OperationCanceledException)
-                {
-                    throw;
-                }
-                catch (Exception error)
-                {
-                    AppendConsoleLine("Server query failed: " + error.Message);
-                }
-
-                await Task.Delay(intervalMilliseconds, cancellationToken);
             }
         }
 
@@ -534,20 +425,6 @@ namespace cs2_things
         {
             decimal bounded = Math.Max(control.Minimum, Math.Min(control.Maximum, value));
             control.Value = bounded;
-        }
-
-        private static void PlayBeeps(int[] frequencies, int[] durations)
-        {
-            try
-            {
-                for (int index = 0; index < frequencies.Length && index < durations.Length; index++)
-                {
-                    NativeBeep((uint)frequencies[index], (uint)durations[index]);
-                }
-            }
-            catch (Exception)
-            {
-            }
         }
 
         private void SelectZip(TextBox target, string title)
@@ -735,7 +612,7 @@ namespace cs2_things
                 MessageBoxIcon.Information);
         }
 
-        private static string FindCs2Root()
+        internal static string FindCs2Root()
         {
             var steamRoots = GetSteamInstallPaths();
             var libraries = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
