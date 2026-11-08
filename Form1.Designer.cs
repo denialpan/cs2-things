@@ -49,37 +49,37 @@ namespace cs2_things
             this.label_cs2_root = new System.Windows.Forms.Label();
             this.textbox_cs2_root = new System.Windows.Forms.TextBox();
             this.tabpage_autojoiner = new System.Windows.Forms.TabPage();
+            this.checkbox_autojoiner_sound = new System.Windows.Forms.CheckBox();
+            this.num_autojoiner_interval = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.num_autojoiner_max = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.num_autojoiner_threshold = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button_autojoiner_start = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textbox_autojoiner_username = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textbox_autojoiner_port = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textbox_autojoiner_ip = new System.Windows.Forms.TextBox();
             this.group_console = new System.Windows.Forms.GroupBox();
             this.rich_console = new System.Windows.Forms.RichTextBox();
             this.button_launch_cs2 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textbox_autojoiner_ip = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textbox_autojoiner_port = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textbox_autojoiner_username = new System.Windows.Forms.TextBox();
-            this.button_autojoiner_start = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.num_autojoiner_threshold = new System.Windows.Forms.NumericUpDown();
-            this.num_autojoiner_max = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            this.num_autojoiner_interval = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.checkbox_autojoiner_sound = new System.Windows.Forms.CheckBox();
             this.tab_main.SuspendLayout();
             this.tabpage_cs2fixes.SuspendLayout();
             this.tabpage_autojoiner.SuspendLayout();
-            this.group_console.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.num_autojoiner_threshold)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num_autojoiner_max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_autojoiner_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_autojoiner_max)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_autojoiner_threshold)).BeginInit();
+            this.group_console.SuspendLayout();
             this.SuspendLayout();
             // 
             // checkbox_tools
             // 
             this.checkbox_tools.AutoSize = true;
             this.checkbox_tools.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkbox_tools.Location = new System.Drawing.Point(12, 12);
+            this.checkbox_tools.Location = new System.Drawing.Point(12, 35);
             this.checkbox_tools.Name = "checkbox_tools";
             this.checkbox_tools.Size = new System.Drawing.Size(91, 19);
             this.checkbox_tools.TabIndex = 0;
@@ -90,7 +90,7 @@ namespace cs2_things
             // 
             this.checkbox_cs2fixes.AutoSize = true;
             this.checkbox_cs2fixes.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkbox_cs2fixes.Location = new System.Drawing.Point(109, 12);
+            this.checkbox_cs2fixes.Location = new System.Drawing.Point(109, 35);
             this.checkbox_cs2fixes.Name = "checkbox_cs2fixes";
             this.checkbox_cs2fixes.Size = new System.Drawing.Size(131, 19);
             this.checkbox_cs2fixes.TabIndex = 1;
@@ -105,12 +105,12 @@ namespace cs2_things
             this.tab_main.Controls.Add(this.tabpage_cs2fixes);
             this.tab_main.Controls.Add(this.tabpage_autojoiner);
             this.tab_main.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tab_main.Location = new System.Drawing.Point(12, 38);
+            this.tab_main.Location = new System.Drawing.Point(12, 63);
             this.tab_main.MaximumSize = new System.Drawing.Size(9999, 9999);
             this.tab_main.MinimumSize = new System.Drawing.Size(480, 67);
             this.tab_main.Name = "tab_main";
             this.tab_main.SelectedIndex = 0;
-            this.tab_main.Size = new System.Drawing.Size(480, 273);
+            this.tab_main.Size = new System.Drawing.Size(480, 251);
             this.tab_main.TabIndex = 3;
             // 
             // tabpage_cs2fixes
@@ -124,7 +124,6 @@ namespace cs2_things
             this.tabpage_cs2fixes.Controls.Add(this.linkLabel1);
             this.tabpage_cs2fixes.Controls.Add(this.label1);
             this.tabpage_cs2fixes.Controls.Add(this.button_install);
-            this.tabpage_cs2fixes.Controls.Add(this.button_cs2_root_autodetect);
             this.tabpage_cs2fixes.Controls.Add(this.button_gfl_ze_configs);
             this.tabpage_cs2fixes.Controls.Add(this.textbox_gfl_ze_configs);
             this.tabpage_cs2fixes.Controls.Add(this.button_strippercs2);
@@ -138,13 +137,10 @@ namespace cs2_things
             this.tabpage_cs2fixes.Controls.Add(this.button_cs2fixescfg);
             this.tabpage_cs2fixes.Controls.Add(this.textbox_cs2fixescfg);
             this.tabpage_cs2fixes.Controls.Add(this.textbox_steamid64);
-            this.tabpage_cs2fixes.Controls.Add(this.button_cs2_root);
-            this.tabpage_cs2fixes.Controls.Add(this.label_cs2_root);
-            this.tabpage_cs2fixes.Controls.Add(this.textbox_cs2_root);
             this.tabpage_cs2fixes.Location = new System.Drawing.Point(4, 24);
             this.tabpage_cs2fixes.Name = "tabpage_cs2fixes";
             this.tabpage_cs2fixes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpage_cs2fixes.Size = new System.Drawing.Size(472, 245);
+            this.tabpage_cs2fixes.Size = new System.Drawing.Size(472, 223);
             this.tabpage_cs2fixes.TabIndex = 0;
             this.tabpage_cs2fixes.Text = "cs2fixes";
             this.tabpage_cs2fixes.UseVisualStyleBackColor = true;
@@ -152,7 +148,7 @@ namespace cs2_things
             // button_uninstall
             // 
             this.button_uninstall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_uninstall.Location = new System.Drawing.Point(391, 214);
+            this.button_uninstall.Location = new System.Drawing.Point(391, 192);
             this.button_uninstall.Name = "button_uninstall";
             this.button_uninstall.Size = new System.Drawing.Size(75, 25);
             this.button_uninstall.TabIndex = 34;
@@ -162,7 +158,7 @@ namespace cs2_things
             // linkLabel5
             // 
             this.linkLabel5.AutoSize = true;
-            this.linkLabel5.Location = new System.Drawing.Point(6, 188);
+            this.linkLabel5.Location = new System.Drawing.Point(6, 161);
             this.linkLabel5.Name = "linkLabel5";
             this.linkLabel5.Size = new System.Drawing.Size(97, 15);
             this.linkLabel5.TabIndex = 33;
@@ -174,7 +170,7 @@ namespace cs2_things
             // linkLabel6
             // 
             this.linkLabel6.AutoSize = true;
-            this.linkLabel6.Location = new System.Drawing.Point(6, 162);
+            this.linkLabel6.Location = new System.Drawing.Point(6, 135);
             this.linkLabel6.Name = "linkLabel6";
             this.linkLabel6.Size = new System.Drawing.Size(64, 15);
             this.linkLabel6.TabIndex = 32;
@@ -186,7 +182,7 @@ namespace cs2_things
             // linkLabel3
             // 
             this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(6, 136);
+            this.linkLabel3.Location = new System.Drawing.Point(6, 109);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(47, 15);
             this.linkLabel3.TabIndex = 31;
@@ -198,7 +194,7 @@ namespace cs2_things
             // linkLabel4
             // 
             this.linkLabel4.AutoSize = true;
-            this.linkLabel4.Location = new System.Drawing.Point(6, 110);
+            this.linkLabel4.Location = new System.Drawing.Point(6, 83);
             this.linkLabel4.Name = "linkLabel4";
             this.linkLabel4.Size = new System.Drawing.Size(108, 15);
             this.linkLabel4.TabIndex = 30;
@@ -210,7 +206,7 @@ namespace cs2_things
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(6, 85);
+            this.linkLabel2.Location = new System.Drawing.Point(6, 58);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(59, 15);
             this.linkLabel2.TabIndex = 29;
@@ -222,7 +218,7 @@ namespace cs2_things
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(6, 59);
+            this.linkLabel1.Location = new System.Drawing.Point(6, 32);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(67, 15);
             this.linkLabel1.TabIndex = 28;
@@ -234,7 +230,7 @@ namespace cs2_things
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 33);
+            this.label1.Location = new System.Drawing.Point(6, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(98, 15);
             this.label1.TabIndex = 20;
@@ -243,7 +239,7 @@ namespace cs2_things
             // button_install
             // 
             this.button_install.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_install.Location = new System.Drawing.Point(311, 214);
+            this.button_install.Location = new System.Drawing.Point(311, 192);
             this.button_install.Name = "button_install";
             this.button_install.Size = new System.Drawing.Size(75, 25);
             this.button_install.TabIndex = 27;
@@ -253,7 +249,8 @@ namespace cs2_things
             // button_cs2_root_autodetect
             // 
             this.button_cs2_root_autodetect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_cs2_root_autodetect.Location = new System.Drawing.Point(392, 7);
+            this.button_cs2_root_autodetect.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button_cs2_root_autodetect.Location = new System.Drawing.Point(418, 8);
             this.button_cs2_root_autodetect.Name = "button_cs2_root_autodetect";
             this.button_cs2_root_autodetect.Size = new System.Drawing.Size(41, 23);
             this.button_cs2_root_autodetect.TabIndex = 19;
@@ -263,7 +260,7 @@ namespace cs2_things
             // button_gfl_ze_configs
             // 
             this.button_gfl_ze_configs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_gfl_ze_configs.Location = new System.Drawing.Point(439, 187);
+            this.button_gfl_ze_configs.Location = new System.Drawing.Point(439, 160);
             this.button_gfl_ze_configs.Name = "button_gfl_ze_configs";
             this.button_gfl_ze_configs.Size = new System.Drawing.Size(27, 23);
             this.button_gfl_ze_configs.TabIndex = 18;
@@ -274,7 +271,7 @@ namespace cs2_things
             // 
             this.textbox_gfl_ze_configs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textbox_gfl_ze_configs.Location = new System.Drawing.Point(127, 188);
+            this.textbox_gfl_ze_configs.Location = new System.Drawing.Point(127, 161);
             this.textbox_gfl_ze_configs.Multiline = true;
             this.textbox_gfl_ze_configs.Name = "textbox_gfl_ze_configs";
             this.textbox_gfl_ze_configs.Size = new System.Drawing.Size(306, 20);
@@ -283,7 +280,7 @@ namespace cs2_things
             // button_strippercs2
             // 
             this.button_strippercs2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_strippercs2.Location = new System.Drawing.Point(439, 161);
+            this.button_strippercs2.Location = new System.Drawing.Point(439, 134);
             this.button_strippercs2.Name = "button_strippercs2";
             this.button_strippercs2.Size = new System.Drawing.Size(27, 23);
             this.button_strippercs2.TabIndex = 16;
@@ -294,7 +291,7 @@ namespace cs2_things
             // 
             this.textbox_strippercs2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textbox_strippercs2.Location = new System.Drawing.Point(127, 162);
+            this.textbox_strippercs2.Location = new System.Drawing.Point(127, 135);
             this.textbox_strippercs2.Multiline = true;
             this.textbox_strippercs2.Name = "textbox_strippercs2";
             this.textbox_strippercs2.Size = new System.Drawing.Size(306, 20);
@@ -303,7 +300,7 @@ namespace cs2_things
             // button_cs2fixes
             // 
             this.button_cs2fixes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_cs2fixes.Location = new System.Drawing.Point(439, 135);
+            this.button_cs2fixes.Location = new System.Drawing.Point(439, 108);
             this.button_cs2fixes.Name = "button_cs2fixes";
             this.button_cs2fixes.Size = new System.Drawing.Size(27, 23);
             this.button_cs2fixes.TabIndex = 14;
@@ -314,7 +311,7 @@ namespace cs2_things
             // 
             this.textbox_cs2fixes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textbox_cs2fixes.Location = new System.Drawing.Point(127, 136);
+            this.textbox_cs2fixes.Location = new System.Drawing.Point(127, 109);
             this.textbox_cs2fixes.Multiline = true;
             this.textbox_cs2fixes.Name = "textbox_cs2fixes";
             this.textbox_cs2fixes.Size = new System.Drawing.Size(306, 20);
@@ -323,7 +320,7 @@ namespace cs2_things
             // button_metamod_launcher
             // 
             this.button_metamod_launcher.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_metamod_launcher.Location = new System.Drawing.Point(439, 109);
+            this.button_metamod_launcher.Location = new System.Drawing.Point(439, 82);
             this.button_metamod_launcher.Name = "button_metamod_launcher";
             this.button_metamod_launcher.Size = new System.Drawing.Size(27, 23);
             this.button_metamod_launcher.TabIndex = 12;
@@ -334,7 +331,7 @@ namespace cs2_things
             // 
             this.textbox_metamod_launcher.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textbox_metamod_launcher.Location = new System.Drawing.Point(127, 110);
+            this.textbox_metamod_launcher.Location = new System.Drawing.Point(127, 83);
             this.textbox_metamod_launcher.Multiline = true;
             this.textbox_metamod_launcher.Name = "textbox_metamod_launcher";
             this.textbox_metamod_launcher.Size = new System.Drawing.Size(306, 20);
@@ -343,7 +340,7 @@ namespace cs2_things
             // button_metamod
             // 
             this.button_metamod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_metamod.Location = new System.Drawing.Point(439, 84);
+            this.button_metamod.Location = new System.Drawing.Point(439, 57);
             this.button_metamod.Name = "button_metamod";
             this.button_metamod.Size = new System.Drawing.Size(27, 23);
             this.button_metamod.TabIndex = 10;
@@ -354,7 +351,7 @@ namespace cs2_things
             // 
             this.textbox_metamod.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textbox_metamod.Location = new System.Drawing.Point(127, 85);
+            this.textbox_metamod.Location = new System.Drawing.Point(127, 58);
             this.textbox_metamod.Multiline = true;
             this.textbox_metamod.Name = "textbox_metamod";
             this.textbox_metamod.Size = new System.Drawing.Size(306, 20);
@@ -363,7 +360,7 @@ namespace cs2_things
             // button_cs2fixescfg
             // 
             this.button_cs2fixescfg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_cs2fixescfg.Location = new System.Drawing.Point(439, 58);
+            this.button_cs2fixescfg.Location = new System.Drawing.Point(439, 31);
             this.button_cs2fixescfg.Name = "button_cs2fixescfg";
             this.button_cs2fixescfg.Size = new System.Drawing.Size(27, 23);
             this.button_cs2fixescfg.TabIndex = 8;
@@ -374,7 +371,7 @@ namespace cs2_things
             // 
             this.textbox_cs2fixescfg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textbox_cs2fixescfg.Location = new System.Drawing.Point(127, 59);
+            this.textbox_cs2fixescfg.Location = new System.Drawing.Point(127, 32);
             this.textbox_cs2fixescfg.Multiline = true;
             this.textbox_cs2fixescfg.Name = "textbox_cs2fixescfg";
             this.textbox_cs2fixescfg.Size = new System.Drawing.Size(306, 20);
@@ -384,7 +381,7 @@ namespace cs2_things
             // 
             this.textbox_steamid64.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textbox_steamid64.Location = new System.Drawing.Point(127, 33);
+            this.textbox_steamid64.Location = new System.Drawing.Point(127, 6);
             this.textbox_steamid64.Multiline = true;
             this.textbox_steamid64.Name = "textbox_steamid64";
             this.textbox_steamid64.Size = new System.Drawing.Size(339, 20);
@@ -393,7 +390,8 @@ namespace cs2_things
             // button_cs2_root
             // 
             this.button_cs2_root.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_cs2_root.Location = new System.Drawing.Point(439, 7);
+            this.button_cs2_root.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.button_cs2_root.Location = new System.Drawing.Point(465, 8);
             this.button_cs2_root.Name = "button_cs2_root";
             this.button_cs2_root.Size = new System.Drawing.Size(27, 23);
             this.button_cs2_root.TabIndex = 3;
@@ -403,7 +401,8 @@ namespace cs2_things
             // label_cs2_root
             // 
             this.label_cs2_root.AutoSize = true;
-            this.label_cs2_root.Location = new System.Drawing.Point(6, 8);
+            this.label_cs2_root.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label_cs2_root.Location = new System.Drawing.Point(9, 9);
             this.label_cs2_root.Name = "label_cs2_root";
             this.label_cs2_root.Size = new System.Drawing.Size(99, 15);
             this.label_cs2_root.TabIndex = 1;
@@ -413,10 +412,11 @@ namespace cs2_things
             // 
             this.textbox_cs2_root.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textbox_cs2_root.Location = new System.Drawing.Point(127, 8);
+            this.textbox_cs2_root.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textbox_cs2_root.Location = new System.Drawing.Point(114, 9);
             this.textbox_cs2_root.Multiline = true;
             this.textbox_cs2_root.Name = "textbox_cs2_root";
-            this.textbox_cs2_root.Size = new System.Drawing.Size(259, 20);
+            this.textbox_cs2_root.Size = new System.Drawing.Size(298, 20);
             this.textbox_cs2_root.TabIndex = 0;
             // 
             // tabpage_autojoiner
@@ -438,167 +438,22 @@ namespace cs2_things
             this.tabpage_autojoiner.Location = new System.Drawing.Point(4, 24);
             this.tabpage_autojoiner.Name = "tabpage_autojoiner";
             this.tabpage_autojoiner.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpage_autojoiner.Size = new System.Drawing.Size(472, 245);
+            this.tabpage_autojoiner.Size = new System.Drawing.Size(472, 223);
             this.tabpage_autojoiner.TabIndex = 1;
             this.tabpage_autojoiner.Text = "autojoiner";
             this.tabpage_autojoiner.UseVisualStyleBackColor = true;
             // 
-            // group_console
+            // checkbox_autojoiner_sound
             // 
-            this.group_console.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.group_console.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.group_console.Controls.Add(this.rich_console);
-            this.group_console.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.group_console.Location = new System.Drawing.Point(12, 317);
-            this.group_console.MaximumSize = new System.Drawing.Size(9999, 9999);
-            this.group_console.MinimumSize = new System.Drawing.Size(478, 129);
-            this.group_console.Name = "group_console";
-            this.group_console.Size = new System.Drawing.Size(478, 183);
-            this.group_console.TabIndex = 4;
-            this.group_console.TabStop = false;
-            this.group_console.Text = "console";
-            // 
-            // rich_console
-            // 
-            this.rich_console.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rich_console.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rich_console.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rich_console.Location = new System.Drawing.Point(4, 23);
-            this.rich_console.Name = "rich_console";
-            this.rich_console.ReadOnly = true;
-            this.rich_console.Size = new System.Drawing.Size(468, 154);
-            this.rich_console.TabIndex = 0;
-            this.rich_console.Text = "";
-            // 
-            // button_launch_cs2
-            // 
-            this.button_launch_cs2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_launch_cs2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_launch_cs2.Location = new System.Drawing.Point(414, 9);
-            this.button_launch_cs2.Margin = new System.Windows.Forms.Padding(0);
-            this.button_launch_cs2.Name = "button_launch_cs2";
-            this.button_launch_cs2.Size = new System.Drawing.Size(77, 26);
-            this.button_launch_cs2.TabIndex = 2;
-            this.button_launch_cs2.Text = "launch cs2";
-            this.button_launch_cs2.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 15);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "ip";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // textbox_autojoiner_ip
-            // 
-            this.textbox_autojoiner_ip.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textbox_autojoiner_ip.Location = new System.Drawing.Point(71, 8);
-            this.textbox_autojoiner_ip.Multiline = true;
-            this.textbox_autojoiner_ip.Name = "textbox_autojoiner_ip";
-            this.textbox_autojoiner_ip.Size = new System.Drawing.Size(395, 20);
-            this.textbox_autojoiner_ip.TabIndex = 21;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 33);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 15);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "port";
-            // 
-            // textbox_autojoiner_port
-            // 
-            this.textbox_autojoiner_port.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textbox_autojoiner_port.Location = new System.Drawing.Point(71, 33);
-            this.textbox_autojoiner_port.Multiline = true;
-            this.textbox_autojoiner_port.Name = "textbox_autojoiner_port";
-            this.textbox_autojoiner_port.Size = new System.Drawing.Size(395, 20);
-            this.textbox_autojoiner_port.TabIndex = 23;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 59);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 15);
-            this.label4.TabIndex = 26;
-            this.label4.Text = "username";
-            // 
-            // textbox_autojoiner_username
-            // 
-            this.textbox_autojoiner_username.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textbox_autojoiner_username.Location = new System.Drawing.Point(71, 59);
-            this.textbox_autojoiner_username.Multiline = true;
-            this.textbox_autojoiner_username.Name = "textbox_autojoiner_username";
-            this.textbox_autojoiner_username.Size = new System.Drawing.Size(395, 20);
-            this.textbox_autojoiner_username.TabIndex = 25;
-            // 
-            // button_autojoiner_start
-            // 
-            this.button_autojoiner_start.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_autojoiner_start.Location = new System.Drawing.Point(410, 216);
-            this.button_autojoiner_start.Name = "button_autojoiner_start";
-            this.button_autojoiner_start.Size = new System.Drawing.Size(56, 23);
-            this.button_autojoiner_start.TabIndex = 27;
-            this.button_autojoiner_start.Text = "start";
-            this.button_autojoiner_start.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 85);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 15);
-            this.label5.TabIndex = 29;
-            this.label5.Text = "threshold";
-            // 
-            // num_autojoiner_threshold
-            // 
-            this.num_autojoiner_threshold.Location = new System.Drawing.Point(71, 85);
-            this.num_autojoiner_threshold.Maximum = new decimal(new int[] {
-            64,
-            0,
-            0,
-            0});
-            this.num_autojoiner_threshold.Name = "num_autojoiner_threshold";
-            this.num_autojoiner_threshold.Size = new System.Drawing.Size(45, 23);
-            this.num_autojoiner_threshold.TabIndex = 30;
-            // 
-            // num_autojoiner_max
-            // 
-            this.num_autojoiner_max.Location = new System.Drawing.Point(191, 85);
-            this.num_autojoiner_max.Maximum = new decimal(new int[] {
-            64,
-            0,
-            0,
-            0});
-            this.num_autojoiner_max.Name = "num_autojoiner_max";
-            this.num_autojoiner_max.Size = new System.Drawing.Size(51, 23);
-            this.num_autojoiner_max.TabIndex = 32;
-            this.num_autojoiner_max.Value = new decimal(new int[] {
-            64,
-            0,
-            0,
-            0});
-            this.num_autojoiner_max.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(122, 85);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 15);
-            this.label6.TabIndex = 31;
-            this.label6.Text = "server max";
+            this.checkbox_autojoiner_sound.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkbox_autojoiner_sound.AutoSize = true;
+            this.checkbox_autojoiner_sound.Location = new System.Drawing.Point(321, 194);
+            this.checkbox_autojoiner_sound.Name = "checkbox_autojoiner_sound";
+            this.checkbox_autojoiner_sound.Size = new System.Drawing.Size(84, 19);
+            this.checkbox_autojoiner_sound.TabIndex = 35;
+            this.checkbox_autojoiner_sound.Text = "play sound";
+            this.checkbox_autojoiner_sound.UseVisualStyleBackColor = true;
+            this.checkbox_autojoiner_sound.CheckedChanged += new System.EventHandler(this.checkbox_autojoiner_sound_CheckedChanged);
             // 
             // num_autojoiner_interval
             // 
@@ -631,31 +486,181 @@ namespace cs2_things
             this.label7.TabIndex = 33;
             this.label7.Text = "interval (ms)";
             // 
-            // checkbox_autojoiner_sound
+            // num_autojoiner_max
             // 
-            this.checkbox_autojoiner_sound.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkbox_autojoiner_sound.AutoSize = true;
-            this.checkbox_autojoiner_sound.Location = new System.Drawing.Point(320, 216);
-            this.checkbox_autojoiner_sound.Name = "checkbox_autojoiner_sound";
-            this.checkbox_autojoiner_sound.Size = new System.Drawing.Size(84, 19);
-            this.checkbox_autojoiner_sound.TabIndex = 35;
-            this.checkbox_autojoiner_sound.Text = "play sound";
-            this.checkbox_autojoiner_sound.UseVisualStyleBackColor = true;
-            this.checkbox_autojoiner_sound.CheckedChanged += new System.EventHandler(this.checkbox_autojoiner_sound_CheckedChanged);
+            this.num_autojoiner_max.Location = new System.Drawing.Point(191, 85);
+            this.num_autojoiner_max.Maximum = new decimal(new int[] {
+            64,
+            0,
+            0,
+            0});
+            this.num_autojoiner_max.Name = "num_autojoiner_max";
+            this.num_autojoiner_max.Size = new System.Drawing.Size(51, 23);
+            this.num_autojoiner_max.TabIndex = 32;
+            this.num_autojoiner_max.Value = new decimal(new int[] {
+            64,
+            0,
+            0,
+            0});
+            this.num_autojoiner_max.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(122, 85);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(63, 15);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "server max";
+            // 
+            // num_autojoiner_threshold
+            // 
+            this.num_autojoiner_threshold.Location = new System.Drawing.Point(71, 85);
+            this.num_autojoiner_threshold.Maximum = new decimal(new int[] {
+            64,
+            0,
+            0,
+            0});
+            this.num_autojoiner_threshold.Name = "num_autojoiner_threshold";
+            this.num_autojoiner_threshold.Size = new System.Drawing.Size(45, 23);
+            this.num_autojoiner_threshold.TabIndex = 30;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 85);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 15);
+            this.label5.TabIndex = 29;
+            this.label5.Text = "threshold";
+            // 
+            // button_autojoiner_start
+            // 
+            this.button_autojoiner_start.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_autojoiner_start.Location = new System.Drawing.Point(411, 194);
+            this.button_autojoiner_start.Name = "button_autojoiner_start";
+            this.button_autojoiner_start.Size = new System.Drawing.Size(56, 23);
+            this.button_autojoiner_start.TabIndex = 27;
+            this.button_autojoiner_start.Text = "start";
+            this.button_autojoiner_start.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 59);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 15);
+            this.label4.TabIndex = 26;
+            this.label4.Text = "username";
+            // 
+            // textbox_autojoiner_username
+            // 
+            this.textbox_autojoiner_username.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textbox_autojoiner_username.Location = new System.Drawing.Point(71, 59);
+            this.textbox_autojoiner_username.Multiline = true;
+            this.textbox_autojoiner_username.Name = "textbox_autojoiner_username";
+            this.textbox_autojoiner_username.Size = new System.Drawing.Size(395, 20);
+            this.textbox_autojoiner_username.TabIndex = 25;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 33);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 15);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "port";
+            // 
+            // textbox_autojoiner_port
+            // 
+            this.textbox_autojoiner_port.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textbox_autojoiner_port.Location = new System.Drawing.Point(71, 33);
+            this.textbox_autojoiner_port.Multiline = true;
+            this.textbox_autojoiner_port.Name = "textbox_autojoiner_port";
+            this.textbox_autojoiner_port.Size = new System.Drawing.Size(395, 20);
+            this.textbox_autojoiner_port.TabIndex = 23;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(17, 15);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "ip";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // textbox_autojoiner_ip
+            // 
+            this.textbox_autojoiner_ip.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textbox_autojoiner_ip.Location = new System.Drawing.Point(71, 8);
+            this.textbox_autojoiner_ip.Multiline = true;
+            this.textbox_autojoiner_ip.Name = "textbox_autojoiner_ip";
+            this.textbox_autojoiner_ip.Size = new System.Drawing.Size(395, 20);
+            this.textbox_autojoiner_ip.TabIndex = 21;
+            // 
+            // group_console
+            // 
+            this.group_console.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.group_console.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.group_console.Controls.Add(this.rich_console);
+            this.group_console.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.group_console.Location = new System.Drawing.Point(12, 318);
+            this.group_console.MaximumSize = new System.Drawing.Size(9999, 9999);
+            this.group_console.MinimumSize = new System.Drawing.Size(478, 151);
+            this.group_console.Name = "group_console";
+            this.group_console.Size = new System.Drawing.Size(478, 151);
+            this.group_console.TabIndex = 4;
+            this.group_console.TabStop = false;
+            this.group_console.Text = "console";
+            // 
+            // rich_console
+            // 
+            this.rich_console.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rich_console.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rich_console.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rich_console.Location = new System.Drawing.Point(4, 23);
+            this.rich_console.Name = "rich_console";
+            this.rich_console.ReadOnly = true;
+            this.rich_console.Size = new System.Drawing.Size(468, 122);
+            this.rich_console.TabIndex = 0;
+            this.rich_console.Text = "";
+            // 
+            // button_launch_cs2
+            // 
+            this.button_launch_cs2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_launch_cs2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_launch_cs2.Location = new System.Drawing.Point(360, 34);
+            this.button_launch_cs2.Margin = new System.Windows.Forms.Padding(0);
+            this.button_launch_cs2.Name = "button_launch_cs2";
+            this.button_launch_cs2.Size = new System.Drawing.Size(132, 26);
+            this.button_launch_cs2.TabIndex = 2;
+            this.button_launch_cs2.Text = "launch cs2";
+            this.button_launch_cs2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
-            this.ClientSize = new System.Drawing.Size(504, 512);
+            this.ClientSize = new System.Drawing.Size(504, 480);
             this.Controls.Add(this.group_console);
             this.Controls.Add(this.tab_main);
             this.Controls.Add(this.button_launch_cs2);
             this.Controls.Add(this.checkbox_cs2fixes);
             this.Controls.Add(this.checkbox_tools);
+            this.Controls.Add(this.textbox_cs2_root);
+            this.Controls.Add(this.label_cs2_root);
+            this.Controls.Add(this.button_cs2_root_autodetect);
+            this.Controls.Add(this.button_cs2_root);
             this.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.MinimumSize = new System.Drawing.Size(520, 547);
+            this.MinimumSize = new System.Drawing.Size(520, 67);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "cs2 things and such";
@@ -664,10 +669,10 @@ namespace cs2_things
             this.tabpage_cs2fixes.PerformLayout();
             this.tabpage_autojoiner.ResumeLayout(false);
             this.tabpage_autojoiner.PerformLayout();
-            this.group_console.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.num_autojoiner_threshold)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num_autojoiner_max)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_autojoiner_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_autojoiner_max)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_autojoiner_threshold)).EndInit();
+            this.group_console.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

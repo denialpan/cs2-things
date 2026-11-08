@@ -50,11 +50,11 @@ namespace cs2_things
             bool autojoinerSelected = tab_main.SelectedTab == tabpage_autojoiner;
             MinimumSize = new System.Drawing.Size(
                 MinimumSize.Width,
-                autojoinerSelected ? 450 : 547);
+                autojoinerSelected ? 434 : 515);
 
             if (autojoinerSelected)
             {
-                Height = 450;
+                Height = 434;
             }
         }
 
